@@ -7,7 +7,7 @@ class IGV
   class Error < StandardError; end
 
   attr_reader :host, :port, :snapshot_dir, :commands
-  def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: '/tmp/igv')
+  def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
     @host = host
     @port = port
     @commands = []
@@ -83,8 +83,8 @@ class IGV
     if file_path
       # igv assumes the path is just a single filename, but
       # we can set the snapshot dir. then just use the filename.
-      dir_path = Pathname(File.expand_path(file_path)).dirname
-      set_snapshot_dir(dir_path)
+      dir_path = File.dirname(file_path)
+      set_snapshot_dir(File.expand_path(dir_path)) if dir_path != '.'
       send 'snapshot ' + File.basename(file_path)
     else
       send 'snapshot'
