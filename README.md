@@ -1,6 +1,10 @@
 # Ruby-IGV
 
-Using Integrative Genomics Viewer (IGV) with the Ruby language.
+[![Gem Version](https://badge.fury.io/rb/ruby-igv.svg)](https://badge.fury.io/rb/ruby-igv)
+[![Docs Latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://rubydoc.info/gems/ruby-igv)
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE.txt)
+
+Using [Integrative Genomics Viewer (IGV)](http://software.broadinstitute.org/software/igv/) with the Ruby language.
 
 Based on [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
 
