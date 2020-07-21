@@ -7,8 +7,8 @@ class IGVTest < Test::Unit::TestCase
     r, w = IO.pipe
     @pid_igv = spawn('igv -p 60151', out: w, err: w)
     Process.detach(@pid_igv)
-    while line = r.gets
-      puts line.colorize(:brown)
+    while line = r.gets.chomp("\n")
+      puts line.colorize(:yellow)
       break if line.include? 'Listening on port 60151'
     end
     @igv = IGV.new
