@@ -18,12 +18,12 @@ gem install ruby-igv
 
 ```ruby
 igv = IGV.new
-igv.gnome 'hg19'
-igv.load 'http://www.broadinstitute.org/igvdata/1KG/pilot2Bams/NA12878.SLX.bam'
-igv.go 'chr1:45,600-45,800'
-igv.save '/tmp/r/region.svg'
-igv.save '/tmp/r/region.png'
-igv.send 'echo' #whatever
+igv.genome 'hg19'
+igv.load   'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam'
+igv.go     'chr18:78,016,233-78,016,640'
+igv.save   '/tmp/r/region.svg'
+igv.save   '/tmp/r/region.png'
+igv.send   'echo' #whatever
 ```
 
 ## Contributing
