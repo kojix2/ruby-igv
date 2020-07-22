@@ -72,6 +72,11 @@ class IGV
     send 'clear'
   end
 
+  def exit
+    send 'exit'
+  end
+  alias quit exit
+
   def send(cmd)
     @commands << cmd
     cmd += "\n"
