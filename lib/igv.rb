@@ -79,9 +79,8 @@ class IGV
 
   def send(cmd)
     @commands << cmd
-    cmd += "\n"
     @socket.puts(cmd.encode(Encoding::UTF_8))
-    @socket.readline.chomp("\n")
+    @socket.gets&.chomp("\n")
   end
 
   def save(file_path = nil)
