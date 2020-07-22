@@ -1,7 +1,6 @@
 require 'igv/version'
 require 'socket'
 require 'fileutils'
-require 'pathname'
 
 class IGV
   class Error < StandardError; end
