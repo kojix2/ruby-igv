@@ -5,11 +5,11 @@ require 'fileutils'
 class IGV
   class Error < StandardError; end
 
-  attr_reader :host, :port, :snapshot_dir, :commands
+  attr_reader :host, :port, :snapshot_dir, :history
   def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
     @host = host
     @port = port
-    @commands = []
+    @history = []
     connect
     set_snapshot_dir(snapshot_dir)
   end
@@ -77,7 +77,7 @@ class IGV
   alias quit exit
 
   def send(cmd)
-    @commands << cmd
+    @history << cmd
     @socket.puts(cmd.encode(Encoding::UTF_8))
     @socket.gets&.chomp("\n")
   end
