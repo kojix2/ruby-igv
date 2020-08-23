@@ -23,8 +23,12 @@ igv.load   'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwR
 igv.go     'chr18:78,016,233-78,016,640'
 igv.save   '/tmp/r/region.svg'
 igv.save   '/tmp/r/region.png'
-igv.send   'echo' #whatever
+igv.snapshot_dir = '/tmp/r2/'
+igv.save   'region.jpg'  # save to /tmp/r2/region.png
+igv.send   'echo'        # whatever you want
 ```
+
+* [Controlling IGV through a Port](https://software.broadinstitute.org/software/igv/PortCommands)
 
 ## Contributing
 
