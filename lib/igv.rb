@@ -30,11 +30,20 @@ class IGV
   alias goto go
 
   def genome(name_or_path)
-    send 'genome ' + name_or_path
+    path = File.expand_path(name_or_path)
+    if File.exist?(path)
+      send 'genome ' + path
+    else
+      send 'genome ' + name_or_path
+    end
   end
 
   def load(path_or_url)
-    send 'load ' + path_or_url
+    if URI.parse(path_or_url).scheme
+      send 'load ' + path_or_url
+    else
+      send 'load ' + File.expand_path(path_or_url)
+    end
   end
 
   def region(contig, start, end_)
@@ -48,16 +57,6 @@ class IGV
       raise 'options is one of: base, position, strand, quality, sample, and readGroup.'
     end
   end
-
-  def snapshot_dir=(snapshot_dir)
-    snapshot_dir = File.expand_path(snapshot_dir)
-    return if snapshot_dir == @snaphot_dir
-
-    FileUtils.mkdir_p(snapshot_dir)
-    send "snapshotDirectory #{snapshot_dir}"
-    @snapshot_dir = snapshot_dir
-  end
-  alias set_snapshot_dir snapshot_dir=
 
   def expand(_track = '')
     send "expand #{track}"
@@ -81,6 +80,16 @@ class IGV
     @socket.puts(cmd.encode(Encoding::UTF_8))
     @socket.gets&.chomp("\n")
   end
+
+  def snapshot_dir=(snapshot_dir)
+    snapshot_dir = File.expand_path(snapshot_dir)
+    return if snapshot_dir == @snaphot_dir
+
+    FileUtils.mkdir_p(snapshot_dir)
+    send "snapshotDirectory #{snapshot_dir}"
+    @snapshot_dir = snapshot_dir
+  end
+  alias set_snapshot_dir snapshot_dir=
 
   def save(file_path = nil)
     if file_path
