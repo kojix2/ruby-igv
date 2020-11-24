@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'igv/version'
 require 'socket'
 require 'fileutils'
@@ -6,6 +8,7 @@ class IGV
   class Error < StandardError; end
 
   attr_reader :host, :port, :snapshot_dir, :history
+
   def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
     @host = host
     @port = port
@@ -25,24 +28,24 @@ class IGV
   end
 
   def go(position)
-    send 'goto ' + position
+    send "goto #{position}"
   end
   alias goto go
 
   def genome(name_or_path)
     path = File.expand_path(name_or_path)
     if File.exist?(path)
-      send 'genome ' + path
+      send "genome #{path}"
     else
-      send 'genome ' + name_or_path
+      send "genome #{name_or_path}"
     end
   end
 
   def load(path_or_url)
     if URI.parse(path_or_url).scheme
-      send 'load ' + path_or_url
+      send "load #{path_or_url}"
     else
-      send 'load ' + File.expand_path(path_or_url)
+      send "load #{File.expand_path(path_or_url)}"
     end
   end
 
@@ -52,7 +55,7 @@ class IGV
 
   def sort(option = 'base')
     if %w[base position strand quality sample readGroup].include? option
-      send 'sort ' + option
+      send "sort #{option}"
     else
       raise 'options is one of: base, position, strand, quality, sample, and readGroup.'
     end
@@ -97,7 +100,7 @@ class IGV
       # we can set the snapshot dir. then just use the filename.
       dir_path = File.dirname(file_path)
       set_snapshot_dir(File.expand_path(dir_path)) if dir_path != '.'
-      send 'snapshot ' + File.basename(file_path)
+      send "snapshot #{File.basename(file_path)}"
     else
       send 'snapshot'
     end
