@@ -4,6 +4,8 @@ require 'igv/version'
 require 'socket'
 require 'fileutils'
 
+# The Integrative Genomics Viewer (IGV)
+# https://software.broadinstitute.org/software/igv/
 class IGV
   class Error < StandardError; end
 
@@ -54,11 +56,11 @@ class IGV
   end
 
   def sort(option = 'base')
-    if %w[base position strand quality sample readGroup].include? option
-      send "sort #{option}"
-    else
+    unless %w[base position strand quality sample readGroup].include? option
       raise 'options is one of: base, position, strand, quality, sample, and readGroup.'
     end
+
+    send "sort #{option}"
   end
 
   def expand(_track = '')
