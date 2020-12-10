@@ -8,11 +8,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ['kojix2']
   spec.email         = ['2xijok@gmail.com']
 
-  spec.summary       = 'Operate IGV (Integrative Genomics Viewer) from Ruby.'
-  spec.description   = 'Operate IGV (Integrative Genomics Viewer) from Ruby.'
+  spec.summary       = 'Control IGV (Integrative Genomics Viewer) with Ruby.'
+  spec.description   = 'Control IGV (Integrative Genomics Viewer) with Ruby.'
   spec.homepage      = 'https://github.com/kojix2/ruby-igv'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
+
+  spec.required_ruby_version = '>= 2.4'
 
   spec.files         = Dir['*.{md,txt}', '{lib}/**/*']
   spec.require_paths = ['lib']
