@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/ruby-igv.svg)](https://badge.fury.io/rb/ruby-igv)
 [![Docs Latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://rubydoc.info/gems/ruby-igv)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE.txt)
+[![DOI](https://zenodo.org/badge/281373245.svg)](https://zenodo.org/badge/latestdoi/281373245)
 
 Controlling [Integrative Genomics Viewer (IGV)](http://software.broadinstitute.org/software/igv/) with the [Ruby](https://github.com/ruby/ruby) language.
 
