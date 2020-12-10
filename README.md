@@ -36,7 +36,7 @@ igv.send   'echo'        # whatever you want
 * Write, clarify, or fix documentation
 * Suggest or add new features
 
-# Acknowledgement
+## Acknowledgement
 This gem is strongly inspired by a Python script developed by Brent Pedersen.
 * [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
 
