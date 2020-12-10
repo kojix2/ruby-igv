@@ -4,9 +4,7 @@
 [![Docs Latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://rubydoc.info/gems/ruby-igv)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE.txt)
 
-Using [Integrative Genomics Viewer (IGV)](http://software.broadinstitute.org/software/igv/) with the Ruby language.
-
-Based on [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
+Controlling [Integrative Genomics Viewer (IGV)](http://software.broadinstitute.org/software/igv/) with the [Ruby](https://github.com/ruby/ruby) language.
 
 ## Installation
 
@@ -36,6 +34,10 @@ igv.send   'echo'        # whatever you want
 * Fix bugs and submit [pull requests](https://github.com/kojix2/ruby-igv/pulls)
 * Write, clarify, or fix documentation
 * Suggest or add new features
+
+# Acknowledgement
+This gem is strongly inspired by a Python script developed by Brent Pedersen.
+* [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
 
 ## License
 
