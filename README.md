@@ -27,7 +27,7 @@ igv.save   'region.jpg'  # save to /tmp/r2/region.png
 igv.send   'echo'        # whatever you want
 ```
 
-* [Controlling IGV through a Port](https://software.broadinstitute.org/software/igv/PortCommands)
+* [Controlling IGV through a Port](https://github.com/igvteam/igv/wiki/Batch-commands)
 
 ## Contributing
 
