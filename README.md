@@ -6,8 +6,6 @@
   <a href="https://zenodo.org/badge/latestdoi/281373245"><img alt="DOI" src="https://zenodo.org/badge/281373245.svg"></a>
 </div>
 
-
-
 ## Installation
 
 Requirement: [IGV (Integrative Genomics Viewer)](http://software.broadinstitute.org/software/igv/) and [Ruby](https://github.com/ruby/ruby).
@@ -17,6 +15,8 @@ gem install ruby-igv
 ```
 
 ## Usage
+
+[Enable IGV to listen on the port](https://software.broadinstitute.org/software/igv/Preferences#Advanced): Preference > Advanced > Enable port
 
 ```ruby
 igv = IGV.new
@@ -30,7 +30,7 @@ igv.save   'region.jpg'  # save to /tmp/r2/region.png
 igv.send   'echo'        # whatever you want
 ```
 
-See [Controlling IGV through a Port](https://github.com/igvteam/igv/wiki/Batch-commands).
+See [the list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-commands).
 
 ## Contributing
 
