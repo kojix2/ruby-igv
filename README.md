@@ -39,6 +39,12 @@ See [the list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-comma
 * Write, clarify, or fix documentation
 * Suggest or add new features
 
+```
+Do you need commit rights to my repository?
+Do you want to get admin rights and take over the project?
+If so, please feel free to contact me @kojix2.
+```
+
 ## Acknowledgement
 This gem is strongly inspired by a Python script developed by Brent Pedersen.
 * [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
