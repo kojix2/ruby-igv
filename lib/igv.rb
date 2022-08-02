@@ -31,9 +31,10 @@ class IGV
 
   # Show IGV batch commands in the browser.
   # https://github.com/igvteam/igv/wiki/Batch-commands
+
   def commands
-    require "launchy"
-    Launchy.open("https://github.com/igvteam/igv/wiki/Batch-commands")
+    require 'launchy'
+    Launchy.open('https://github.com/igvteam/igv/wiki/Batch-commands')
   end
 
   def go(position)
