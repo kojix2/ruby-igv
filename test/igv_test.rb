@@ -7,7 +7,7 @@ require 'igv'
 class IGVTest < Test::Unit::TestCase
   def setup
     r, w = IO.pipe
-    @pid_igv = spawn('igv -p 60151', out: w, err: w)
+    @pid_igv = spawn('igv', '-p', '60151', pgroup: true, out: w, err: w)
     Process.detach(@pid_igv)
     while (line = r.gets.chomp("\n"))
       puts line.colorize(:yellow)
@@ -21,6 +21,7 @@ class IGVTest < Test::Unit::TestCase
   end
 
   def teardown
-    Process.kill(:TERM, @pid_igv)
+    pgid = Process.getpgid(@pid_igv)
+    Process.kill(:TERM, -pgid)
   end
 end
