@@ -37,6 +37,15 @@ class IGV
     Launchy.open('https://github.com/igvteam/igv/wiki/Batch-commands')
   end
 
+  # Writes the value of "param" back to the response
+  #
+  # @param param [String] The parameter to echo.
+  # @return [String] The value of "param". If param is not specified, "echo".
+
+  def echo(param = nil)
+    send "echo #{param}"
+  end
+
   def go(position)
     send "goto #{position}"
   end

@@ -17,7 +17,8 @@ class IGVTest < Test::Unit::TestCase
   end
 
   def test_echo
-    assert_equal 'echo', @igv.send('echo')
+    assert_equal 'echo', @igv.echo
+    assert_equal 'Hello!', @igv.echo("Hello!")
   end
 
   def teardown
