@@ -24,9 +24,7 @@ class IGV
 
   def connect
     @socket&.close
-    @socket = Socket.new(Socket::AF_INET, Socket::SOCK_STREAM)
-    addr = Socket.sockaddr_in(port, host)
-    @socket.connect(addr)
+    @socket = Socket.tcp(host, port)
   end
 
   # Show IGV batch commands in the browser.
