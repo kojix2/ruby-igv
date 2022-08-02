@@ -29,6 +29,13 @@ class IGV
     @socket.connect(addr)
   end
 
+  # Show IGV batch commands in the browser.
+  # https://github.com/igvteam/igv/wiki/Batch-commands
+  def commands
+    require "launchy"
+    Launchy.open("https://github.com/igvteam/igv/wiki/Batch-commands")
+  end
+
   def go(position)
     send "goto #{position}"
   end

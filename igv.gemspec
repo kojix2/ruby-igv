@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['*.{md,txt}', '{lib}/**/*']
   spec.require_paths = ['lib']
 
+  spec.add_runtime_dependency 'launchy'
+
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'colorize'
   spec.add_development_dependency 'rake'
