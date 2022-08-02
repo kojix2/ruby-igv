@@ -89,6 +89,10 @@ class IGV
   alias quit exit
 
   def send(cmd)
+    cmd = cmd.to_str if cmd.respond_to? :to_str
+    cmd = cmd.to_s if cmd.is_a? Symbol
+    raise ArgumentError, 'cmd is not a string or a symbol' unless cmd.is_a? String
+
     @history << cmd
     @socket.puts(cmd.encode(Encoding::UTF_8))
     @socket.gets&.chomp("\n")
