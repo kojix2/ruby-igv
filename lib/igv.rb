@@ -95,13 +95,18 @@ class IGV
   end
   alias quit exit
 
-  def send(cmd)
-    cmd = cmd.to_str if cmd.respond_to? :to_str
-    cmd = cmd.to_s if cmd.is_a? Symbol
-    raise ArgumentError, 'cmd is not a string or a symbol' unless cmd.is_a? String
+  def send(*cmds)
+    cmds.map! do |cmd|
+      cmd = cmd.to_str if cmd.respond_to? :to_str
+      cmd = cmd.to_s if cmd.is_a? Symbol
+      cmd.is_a?(String) || raise(ArgumentError, "#{cmd.inspect} is not a string")
+      cmd.strip.encode(Encoding::UTF_8)
+    end
+
+    cmd = cmds.join(' ')
 
     @history << cmd
-    @socket.puts(cmd.encode(Encoding::UTF_8))
+    @socket.puts(cmd)
     @socket.gets&.chomp("\n")
   end
 
