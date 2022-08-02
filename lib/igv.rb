@@ -63,11 +63,11 @@ class IGV
     send "sort #{option}"
   end
 
-  def expand(_track = '')
+  def expand(track = '')
     send "expand #{track}"
   end
 
-  def collapse(_track = '')
+  def collapse(track = '')
     send "collapse #{track}"
   end
 
