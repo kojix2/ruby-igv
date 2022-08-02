@@ -31,6 +31,10 @@ igv.send   'echo'        # whatever you want
 
 See [the list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-commands).
 
+```ruby
+igv.commands # Show the IGV command reference in your browser
+```
+
 ## Contributing
 
 * [Report bugs](https://github.com/kojix2/ruby-igv/issues)
