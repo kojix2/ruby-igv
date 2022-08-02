@@ -266,6 +266,37 @@
 
   
     <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start-class_method" title="start (class method)">.<strong>start</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
       Instance Method Summary
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
@@ -357,9 +388,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>def self.start end.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -504,6 +533,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>A new instance of IGV.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kill-instance_method" title="#kill (instance method)">#<strong>kill</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -855,6 +906,66 @@
   </div>
 
 
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="start-class_method">
+  
+    .<strong>start</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
+  <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_w'>w</span> <span class='op'>=</span> <span class='const'>IO</span><span class='period'>.</span><span class='id identifier rubyid_pipe'>pipe</span>
+  <span class='id identifier rubyid_pid_igv'>pid_igv</span> <span class='op'>=</span> <span class='id identifier rubyid_spawn'>spawn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>igv</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-p</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>60151</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>pgroup:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>out:</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='label'>err:</span> <span class='id identifier rubyid_w'>w</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_pgid_igv'>pgid_igv</span> <span class='op'>=</span> <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_getpgid'>getpgid</span><span class='lparen'>(</span><span class='id identifier rubyid_pid_igv'>pid_igv</span><span class='rparen'>)</span>
+  <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_detach'>detach</span><span class='lparen'>(</span><span class='id identifier rubyid_pid_igv'>pid_igv</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[33m</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>while</span> <span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_line'>line</span>
+    <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Listening on port 60151</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[0m</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@pgid_igv</span><span class='comma'>,</span> <span class='id identifier rubyid_pgid_igv'>pgid_igv</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_igv'>igv</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
 
@@ -874,12 +985,12 @@
       <pre class="lines">
 
 
-92
-93
-94</pre>
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span>
   <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:clear</span>
@@ -904,12 +1015,12 @@
       <pre class="lines">
 
 
-88
-89
-90</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collapse'>collapse</span><span class='lparen'>(</span><span class='id identifier rubyid_track'>track</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:collapse</span><span class='comma'>,</span> <span class='id identifier rubyid_track'>track</span>
@@ -945,13 +1056,13 @@
       <pre class="lines">
 
 
-33
-34
-35
-36</pre>
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_commands'>commands</span>
   <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>launchy</span><span class='tstring_end'>&#39;</span></span>
@@ -971,30 +1082,19 @@
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>def self.start end</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-25
-26
-27
-28</pre>
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect'>connect</span>
   <span class='ivar'>@socket</span><span class='op'>&amp;.</span><span class='id identifier rubyid_close'>close</span>
@@ -1071,12 +1171,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_echo'>echo</span><span class='lparen'>(</span><span class='id identifier rubyid_param'>param</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:echo</span><span class='comma'>,</span> <span class='id identifier rubyid_param'>param</span>
@@ -1105,12 +1205,12 @@
       <pre class="lines">
 
 
-96
-97
-98</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exit'>exit</span>
   <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:exit</span>
@@ -1135,12 +1235,12 @@
       <pre class="lines">
 
 
-84
-85
-86</pre>
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expand'>expand</span><span class='lparen'>(</span><span class='id identifier rubyid_track'>track</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:expand</span><span class='comma'>,</span> <span class='id identifier rubyid_track'>track</span>
@@ -1196,17 +1296,17 @@
       <pre class="lines">
 
 
-56
-57
-58
-59
-60
-61
-62
-63</pre>
+82
+83
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_genome'>genome</span><span class='lparen'>(</span><span class='id identifier rubyid_name_or_path'>name_or_path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_name_or_path'>name_or_path</span><span class='rparen'>)</span>
@@ -1240,15 +1340,63 @@
       <pre class="lines">
 
 
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_goto'>goto</span><span class='lparen'>(</span><span class='id identifier rubyid_position'>position</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:goto</span><span class='comma'>,</span> <span class='id identifier rubyid_position'>position</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="kill-instance_method">
+  
+    #<strong>kill</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42
+43
+44
+45
+46
 47
 48
 49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 38</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_goto'>goto</span><span class='lparen'>(</span><span class='id identifier rubyid_position'>position</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:goto</span><span class='comma'>,</span> <span class='id identifier rubyid_position'>position</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_kill'>kill</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_instance_variable_defined?'>instance_variable_defined?</span><span class='lparen'>(</span><span class='symbol'>:@pgid_igv</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_warn'>warn</span> \
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>This method kills the process with the group ID specified at startup. </span><span class='tstring_end'>&#39;</span></span> \
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Please use exit or quit if possible.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>IGVs started outside of a Ruby program cannot be terminated.</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>return</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_pgid'>pgid</span> <span class='op'>=</span> <span class='ivar'>@pgid_igv</span>
+  <span class='const'>Process</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='symbol'>:TERM</span><span class='comma'>,</span> <span class='op'>-</span><span class='id identifier rubyid_pgid'>pgid</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1270,16 +1418,16 @@
       <pre class="lines">
 
 
-65
-66
-67
-68
-69
-70
-71</pre>
+91
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_path_or_url'>path_or_url</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span>
@@ -1308,12 +1456,12 @@
       <pre class="lines">
 
 
-73
-74
-75</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_region'>region</span><span class='lparen'>(</span><span class='id identifier rubyid_contig'>contig</span><span class='comma'>,</span> <span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_end_'>end_</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:region</span><span class='comma'>,</span> <span class='id identifier rubyid_contig'>contig</span><span class='comma'>,</span> <span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_end_'>end_</span>
@@ -1342,17 +1490,17 @@
       <pre class="lines">
 
 
-128
-129
-130
-131
-132
-133
-134
-135</pre>
+154
+155
+156
+157
+158
+159
+160
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:snapshot</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_file_path'>file_path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1382,25 +1530,25 @@
       <pre class="lines">
 
 
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116</pre>
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_cmds'>cmds</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cmd'>cmd</span> <span class='op'>=</span> \
@@ -1438,15 +1586,15 @@
       <pre class="lines">
 
 
-77
-78
-79
-80
-81
-82</pre>
+103
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/igv.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sort'>sort</span><span class='lparen'>(</span><span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>base</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_vop'>vop</span> <span class='op'>=</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>base</span><span class='words_sep'> </span><span class='tstring_content'>position</span><span class='words_sep'> </span><span class='tstring_content'>strand</span><span class='words_sep'> </span><span class='tstring_content'>quality</span><span class='words_sep'> </span><span class='tstring_content'>sample</span><span class='words_sep'> </span><span class='tstring_content'>readGroup</span><span class='tstring_end'>]</span></span>
@@ -1464,7 +1612,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Aug  2 13:15:04 2022 by
+  Generated on Tue Aug  2 13:56:24 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
