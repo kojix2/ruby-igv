@@ -19,8 +19,34 @@ class IGV
     set_snapshot_dir(snapshot_dir)
   end
 
-  # def self.start
-  # end
+  def self.start
+    r, w = IO.pipe
+    pid_igv = spawn('igv', '-p', '60151', pgroup: true, out: w, err: w)
+    pgid_igv = Process.getpgid(pid_igv)
+    Process.detach(pid_igv)
+    puts "\e[33m"
+    while (line = r.gets.chomp("\n"))
+      puts line
+      break if line.include? 'Listening on port 60151'
+    end
+    puts "\e[0m"
+    igv = new
+    igv.instance_variable_set(:@pgid_igv, pgid_igv)
+    igv
+  end
+
+  def kill
+    if instance_variable_defined?(:@pgid_igv)
+      warn \
+        'This method kills the process with the group ID specified at startup. ' \
+        'Please use exit or quit if possible.'
+    else
+      warn 'IGVs started outside of a Ruby program cannot be terminated.'
+      return
+    end
+    pgid = @pgid_igv
+    Process.kill(:TERM, -pgid)
+  end
 
   def connect
     @socket&.close
