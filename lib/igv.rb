@@ -115,12 +115,19 @@ class IGV
     end
   end
 
-  def load(path_or_url)
-    if URI.parse(path_or_url).scheme
-      send :load, path_or_url
-    else
-      send :load, File.expand_path(path_or_url)
-    end
+  # Loads a data or session file by specifying a full path to a local file or a URL.
+  #
+  # @param path_or_url [String] The path to a local file or a URL
+  # @param index [String] The index of the file
+
+  def load(path_or_url, index: nil)
+    path_or_url = if URI.parse(path_or_url).scheme
+                    path_or_url
+                  else
+                    File.expand_path(path_or_url)
+                  end
+    index = "index=#{index}" if index
+    send :load, path_or_url, index
   end
 
   def region(contig, start, end_)
