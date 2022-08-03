@@ -134,6 +134,11 @@ class IGV
     send :sort, option
   end
 
+  # Expands the given track.
+  #
+  # @param track [String] The track to expand.
+  #                       If not specified, expands all tracks.
+
   def expand(track = nil)
     send :expand, track
   end
