@@ -5,6 +5,7 @@
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE.txt)
 [![DOI](https://zenodo.org/badge/281373245.svg)](https://zenodo.org/badge/latestdoi/281373245)
 
+Ruby-IGV is a simple tool for controlling the Integrated Genomics Viewer (IGV) from the Ruby language. It provides an automated way to load files, specify genome locations, and take and save screenshots using IGV.
 
 <img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" align="right">
 
