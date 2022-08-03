@@ -23,8 +23,6 @@ gem install ruby-igv
 
 ## Quickstart
 
-
-
 ```ruby
 require 'igv'
 
@@ -39,11 +37,24 @@ igv.exit
 
 ## Usage
 
+### docs
+
 See [the list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-commands).
 
 ```ruby
 igv.commands # Show the IGV command reference in your browser
 ```
+
+[docs](https://rubydoc.info/gems/ruby-igv)
+
+### send
+
+Not all commands are implemented in Ruby. Commands that are not implemented can be sent using the send method.
+
+```ruby
+igv.send("maxPanelHeight", 10)
+```
+
 
 ### Launch IGV
 
