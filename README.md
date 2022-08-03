@@ -24,19 +24,21 @@ gem install ruby-igv
 
 ## Quickstart
 
+<img src="https://user-images.githubusercontent.com/5798442/182623864-a9fa59aa-abb9-4cb1-8311-2b3479b7414e.png" width="300" align="left">
+
 ```ruby
 require 'igv'
 
 igv = IGV.start # This launch IGV
-igv.genome   'hg19'
-igv.load     'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/' \
-             'wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam'
-igv.go       'chr18:78,016,233-78,016,640'
-igv.snapshot 'region.png'
-igv.exit
-```
 
-![snapshot](https://user-images.githubusercontent.com/5798442/182622378-bb091cb8-ae27-44eb-bc96-563312014329.png)
+igv.set      :SleepInterval, 200 # give a time interval
+igv.genome   'hg19'
+igv.load     'http://hgdownload.cse.ucsc.edu/goldenPath/' \
+             'hg19/encodeDCC/wgEncodeUwRepliSeq/' \
+             'wgEncodeUwRepliSeqK562G1AlnRep1.bam'
+igv.go       'chr18:78016233-78016640'
+igv.snapshot 'region.png'
+```
 
 ## Usage
 
