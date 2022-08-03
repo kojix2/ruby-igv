@@ -64,9 +64,9 @@
 
 <p>Ruby-IGV is a simple tool for controlling the Integrated Genomics Viewer (IGV) from the Ruby language. It provides an automated way to load files, specify genome locations, and take and save screenshots using IGV.</p>
 
-<p>&lt;img src=“<img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" />” align=“right”&gt;</p>
-
 <h2 id="label-Installation">Installation</h2>
+
+<p>&lt;img src=“<img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" />” width=“300” align=“right”&gt;</p>
 
 <p>Requirement :</p>
 <ul><li>
@@ -84,7 +84,7 @@
 
 <h2 id="label-Quickstart">Quickstart</h2>
 
-<p>&lt;img src=“<img src="https://user-images.githubusercontent.com/5798442/182623864-a9fa59aa-abb9-4cb1-8311-2b3479b7414e.png" />” width=“300” align=“left”&gt;</p>
+<p>&lt;img src=“<img src="https://user-images.githubusercontent.com/5798442/182623864-a9fa59aa-abb9-4cb1-8311-2b3479b7414e.png" />” width=“300” align=“right”&gt;</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>igv</span><span class='tstring_end'>&#39;</span></span>
 
@@ -101,16 +101,16 @@
 
 <h2 id="label-Usage">Usage</h2>
 
-<h3 id="label-commands">commands</h3>
+<h3 id="label-IGV+batch+commands">IGV batch commands</h3>
 
-<p>The commonly used commands in IGV are summarized in the official <a href="https://github.com/igvteam/igv/wiki/Batch-commands">list of Batch commands</a>. (but even this does not seem to be all of them). You can also call the <code>commands</code> method from Ruby to open a browser and view the list.</p>
+<p>The commonly used commands in IGV are summarized in the official <a href="https://github.com/igvteam/igv/wiki/Batch-commands">list of batch commands</a>. (but even this does not seem to be all of them). You can also call the <code>commands</code> method from Ruby to open a browser and view the list.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_commands'>commands</span> <span class='comment'># Show the IGV command reference in your browser
 </span></code></pre>
 
 <h3 id="label-docs">docs</h3>
 
-<p>See <a href="https://rubydoc.info/gems/ruby-igv/IGV">docs</a>. Not all commands are implemented in Ruby.</p>
+<p>See <a href="https://rubydoc.info/gems/ruby-igv/IGV">yard docs</a>. Commonly used IGV batch commands can be called from Ruby methods of the same name. However, not all IGV batch commands are implemented in Ruby. Use the <code>send</code> method described below.</p>
 
 <h3 id="label-send">send</h3>
 
@@ -119,6 +119,8 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>maxPanelHeight</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>10</span><span class='rparen'>)</span>
 </code></pre>
 
+<p>To avoid unexpected behavior, ruby-igv does not use the <code>method_missing</code> mechanism.</p>
+
 <h3 id="label-Launch+IGV">Launch IGV</h3>
 
 <p>Launch IGV from Ruby script.</p>
@@ -126,10 +128,35 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="IGV.html#start-class_method" title="IGV.start (method)">start</a></span></span> <span class='comment'># launch IGV app using spawn
 </span></code></pre>
 
+<p>You can specify the port.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="IGV.html#start-class_method" title="IGV.start (method)">start</a></span></span><span class='lparen'>(</span><span class='label'>port:</span> <span class='int'>60152</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>If you start IGV in this way, you can force IGV to terminate by calling the kill method.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span>
+</code></pre>
+
 <h3 id="label-Open+socket+connection+to+IGV">Open socket connection to IGV</h3>
 
+<p>If IGV is already running, use <code>new</code> or <code>open</code>.</p>
+
+<p>new</p>
+
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="IGV.html#initialize-instance_method" title="IGV#initialize (method)">new</a></span></span>   <span class='comment'># create an IGV object. Then you will type `igv.connect`
-</span><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_open'><span class='object_link'><a href="IGV.html#open-class_method" title="IGV.open (method)">open</a></span></span>  <span class='comment'># create an IGV object and connect it to an already activated IGV.
+</span><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="IGV.html#initialize-instance_method" title="IGV#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>host:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>port:</span> <span class='int'>60151</span><span class='comma'>,</span> <span class='label'>snapshot_dir:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>~/igv_snapshot</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span> <span class='comment'># To start a connection, call connect explicitly.
+</span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+</code></pre>
+
+<p>open</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_open'><span class='object_link'><a href="IGV.html#open-class_method" title="IGV.open (method)">open</a></span></span>  <span class='comment'># create an IGV object and connect it to an already activated IGV.
+</span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+<span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_open'><span class='object_link'><a href="IGV.html#open-class_method" title="IGV.open (method)">open</a></span></span><span class='lparen'>(</span><span class='label'>host:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>port:</span> <span class='int'>60151</span><span class='comma'>,</span> <span class='label'>snapshot_dir:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>~/igv_snapshot</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_igv'>igv</span><span class='op'>|</span>
+  <span class='comment'># do something
+</span><span class='kw'>end</span> <span class='comment'># The socket is automatically closed.
 </span></code></pre>
 
 <h3 id="label-Close+IGV">Close IGV</h3>
@@ -153,7 +180,7 @@
 <p>Suggest or add new features</p>
 </li></ul>
 
-<pre class="code ruby"><code class="ruby">Do you need commit rights to my repository?
+<pre class="code ruby"><code class="ruby">Do you need commit rights to this repository?
 Do you want to get admin rights and take over the project?
 If so, please feel free to contact me @kojix2.
 </code></pre>
@@ -168,7 +195,7 @@ If so, please feel free to contact me @kojix2.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Aug  3 14:00:16 2022 by
+  Generated on Wed Aug  3 20:43:03 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
