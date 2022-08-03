@@ -38,13 +38,24 @@ igv.commands # Show the IGV command reference in your browser
 
 ### Launch IGV
 
-```
+Launch IGV from Ruby scripot.
+
+```ruby
 igv = IGV.start # launch IGV app using spawn
+```
+
+Connects to an already activated IGV.
+
+```ruby
 igv = IGV.new   # create an IGV object.
 igv = IGV.open  # create an IGV object and connect it to an already activated IGV.
+```
 
+The behavior of the following methods is different.
+
+```ruby
 igv.close       # disconnect the socket
-igv.exit        # send exit command
+igv.exit        # send exit command to IGV
 igv.quit        # alias method to exit
 igv.kill        # kill group pid created with IGV.start
 ```
