@@ -202,10 +202,12 @@ class IGV
   alias quit exit
 
   #	Sets the directory in which to write images.
+  # Retruns the current snapshot directory if no argument is given.
   #
   # @param path [String] The path to the directory.
 
-  def snapshot_dir(dir_path)
+  def snapshot_dir(dir_path = nil)
+    return @snapshot_dir if dir_path.nil?
     dir_path = File.expand_path(dir_path)
     return if dir_path == @snapshot_dir
 
