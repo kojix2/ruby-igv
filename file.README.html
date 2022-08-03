@@ -84,18 +84,20 @@
 
 <h2 id="label-Quickstart">Quickstart</h2>
 
+<p>&lt;img src=“<img src="https://user-images.githubusercontent.com/5798442/182623864-a9fa59aa-abb9-4cb1-8311-2b3479b7414e.png" />” width=“300” align=“left”&gt;</p>
+
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>igv</span><span class='tstring_end'>&#39;</span></span>
 
 <span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="IGV.html#start-class_method" title="IGV.start (method)">start</a></span></span> <span class='comment'># This launch IGV
+</span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_set'>set</span>      <span class='symbol'>:SleepInterval</span><span class='comma'>,</span> <span class='int'>200</span> <span class='comment'># give a time interval
 </span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_genome'>genome</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hg19</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span>     <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/</span><span class='tstring_end'>&#39;</span></span> \
-             <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_go'>go</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>chr18:78,016,233-78,016,640</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span>     <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://hgdownload.cse.ucsc.edu/goldenPath/</span><span class='tstring_end'>&#39;</span></span> \
+             <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hg19/encodeDCC/wgEncodeUwRepliSeq/</span><span class='tstring_end'>&#39;</span></span> \
+             <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wgEncodeUwRepliSeqK562G1AlnRep1.bam</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_go'>go</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>chr18:78016233-78016640</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_snapshot'>snapshot</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>region.png</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span>
 </code></pre>
-
-<p><img src="https://user-images.githubusercontent.com/5798442/182622378-bb091cb8-ae27-44eb-bc96-563312014329.png"></p>
 
 <h2 id="label-Usage">Usage</h2>
 
@@ -166,7 +168,7 @@ If so, please feel free to contact me @kojix2.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Aug  3 13:41:41 2022 by
+  Generated on Wed Aug  3 13:58:50 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
