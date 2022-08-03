@@ -10,10 +10,12 @@
 
 ## Installation
 
-Requirement : [IGV (Integrative Genomics Viewer)](http://software.broadinstitute.org/software/igv/) and [Ruby](https://github.com/ruby/ruby).
+Requirement : 
 
-[Enable IGV to listen on the port](https://software.broadinstitute.org/software/igv/Preferences#Advanced) : View > Preference > Advanced > Enable port 
-
+* [Ruby](https://github.com/ruby/ruby)
+* [IGV (Integrative Genomics Viewer)](http://software.broadinstitute.org/software/igv/)
+  * [Enable IGV to listen on the port](https://software.broadinstitute.org/software/igv/Preferences#Advanced)
+  * View > Preference > Advanced > Enable port ☑
 
 ```ruby
 gem install ruby-igv
