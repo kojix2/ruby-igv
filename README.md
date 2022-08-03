@@ -53,8 +53,10 @@ igv = IGV.open  # create an IGV object and connect it to an already activated IG
 
 The behavior of the following methods is different.
 
+### Close IGV
+
 ```ruby
-igv.close       # disconnect the socket
+igv.close       # close the socket connection
 igv.exit        # send exit command to IGV
 igv.quit        # alias method to exit
 igv.kill        # kill group pid created with IGV.start
