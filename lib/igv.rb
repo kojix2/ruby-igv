@@ -11,9 +11,10 @@ class IGV
 
   attr_reader :host, :port, :history
 
-  def initialize(host = '127.0.0.1', port = 60_151)
+  def initialize(host = '127.0.0.1', port = 60_151, snapshot_dir: Dir.pwd)
     @host = host
     @port = port
+    @snapshot_dir = File.expand_path(snapshot_dir)
     @history = []
   end
 
@@ -80,6 +81,25 @@ class IGV
     @socket.closed?
   end
 
+  # Send batch commands to IGV.
+
+  def send(*cmds)
+    cmd = \
+      cmds
+      .compact
+      .map do |cmd|
+        case cmd
+        when String, Symbol                   then cmd.to_s
+        when ->(c) { c.respond_to?(:to_str) } then cmd.to_str
+        else raise ArgumentError, "#{cmd.inspect} is not a string"
+        end.strip.encode(Encoding::UTF_8)
+      end
+      .join(' ')
+    @history << cmd
+    @socket.puts(cmd)
+    @socket.gets&.chomp("\n")
+  end
+
   # Show IGV batch commands in the browser.
   # https://github.com/igvteam/igv/wiki/Batch-commands
 
@@ -96,15 +116,6 @@ class IGV
   def echo(param = nil)
     send :echo, param
   end
-
-  # Go to the specified location
-  #
-  # @param location [String] The location to go to.
-
-  def goto(position)
-    send :goto, position
-  end
-  alias go goto
 
   # Selects a genome by id, or loads a genome (or indexed fasta) from the supplied path.
   #
@@ -133,6 +144,15 @@ class IGV
     index = "index=#{index}" if index
     send :load, path_or_url, index
   end
+
+  # Go to the specified location
+  #
+  # @param location [String] The location to go to.
+
+  def goto(position)
+    send :goto, position
+  end
+  alias go goto
 
   # Defines a region of interest bounded by the two loci
   #
@@ -181,40 +201,47 @@ class IGV
   end
   alias quit exit
 
-  def send(*cmds)
-    cmd = \
-      cmds
-      .compact
-      .map do |cmd|
-        case cmd
-        when String, Symbol                   then cmd.to_s
-        when ->(c) { c.respond_to?(:to_str) } then cmd.to_str
-        else raise ArgumentError, "#{cmd.inspect} is not a string"
-        end.strip.encode(Encoding::UTF_8)
-      end
-      .join(' ')
-    @history << cmd
-    @socket.puts(cmd)
-    @socket.gets&.chomp("\n")
+  #	Sets the directory in which to write images.
+  #
+  # @param path [String] The path to the directory.
+
+  def snapshot_dir(dir_path)
+    dir_path = File.expand_path(dir_path)
+    return if dir_path == @snapshot_dir
+
+    r = snapshot_dir_internal(dir_path)
+    @snapshot_dir = dir_path
+    r
   end
 
-  def snapshot_dir=(dir_path, force: false)
+  private def snapshot_dir_internal(dir_path)
     dir_path = File.expand_path(dir_path)
-    return if !force && dir_path == @snapshot_dir
-
     FileUtils.mkdir_p(dir_path)
     send :snapshotDirectory, dir_path
-    @snapshot_dir = dir_path
   end
-  alias set_snapshot_dir snapshot_dir=
+
+  # Saves a snapshot of the IGV window to an image file.
+  # If filename is omitted, writes a PNG file with a filename generated based on the locus.
+  # If filename is specified, the filename extension determines the image file format, 
+  # which must be either .png or .svg.
+  # @note In Ruby-IGV, it is possible to pass absolute or relative paths as well as file names;
+  #       the Snapshot directory is set to Dir.pwd by default.
+  #
+  # @param file_path [String] The path to the image file.
 
   def snapshot(file_path = nil)
     return send(:snapshot) if file_path.nil?
 
     dir_path = File.dirname(file_path)
     filename = File.basename(file_path)
-    set_snapshot_dir(dir_path)
-    send :snapshot, File.basename(filename)
+    if dir_path != @snapshot_dir
+      set_snapshot_dir_internal(dir_path)
+      r = send :snapshot, filename
+      set_snapshot_dir_internal(@snapshot_dir)
+      r
+    else
+      send :snapshot, filename
+    end
   end
 
   # Temporarily set the preference named key to the specified value. 
