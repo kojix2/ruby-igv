@@ -74,6 +74,12 @@ class IGV
     @socket&.close
   end
 
+  def closed?
+    return true if @socket.nil?
+
+    @socket.closed?
+  end
+
   # Show IGV batch commands in the browser.
   # https://github.com/igvteam/igv/wiki/Batch-commands
 
