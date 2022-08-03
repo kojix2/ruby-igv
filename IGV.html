@@ -2284,9 +2284,9 @@
   <span class='id identifier rubyid_dir_path'>dir_path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_file_path'>file_path</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_dir_path'>dir_path</span> <span class='op'>!=</span> <span class='ivar'>@snapshot_dir</span>
-    <span class='id identifier rubyid_set_snapshot_dir_internal'>set_snapshot_dir_internal</span><span class='lparen'>(</span><span class='id identifier rubyid_dir_path'>dir_path</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_snapshot_dir_internal'>snapshot_dir_internal</span><span class='lparen'>(</span><span class='id identifier rubyid_dir_path'>dir_path</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:snapshot</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span>
-    <span class='id identifier rubyid_set_snapshot_dir_internal'>set_snapshot_dir_internal</span><span class='lparen'>(</span><span class='ivar'>@snapshot_dir</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_snapshot_dir_internal'>snapshot_dir_internal</span><span class='lparen'>(</span><span class='ivar'>@snapshot_dir</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_r'>r</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_send'>send</span> <span class='symbol'>:snapshot</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span>
@@ -2409,7 +2409,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Aug  3 08:20:04 2022 by
+  Generated on Wed Aug  3 08:28:40 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
