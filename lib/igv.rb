@@ -9,14 +9,25 @@ require 'fileutils'
 class IGV
   class Error < StandardError; end
 
-  attr_reader :host, :port, :snapshot_dir, :history
+  attr_reader :host, :port, :history
 
-  def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
+  def initialize(host = '127.0.0.1', port = 60_151)
     @host = host
     @port = port
     @history = []
-    connect
-    set_snapshot_dir(snapshot_dir)
+  end
+
+  def self.open(host = '127.0.0.1', port = 60_151, **kw)
+    igv = new(host, port, **kw)
+    igv.connect
+    return igv unless block_given?
+
+    begin
+      yield igv
+    ensure
+      @socket&.close
+    end
+    igv
   end
 
   def self.start
@@ -41,7 +52,9 @@ class IGV
         'This method kills the process with the group ID specified at startup. ' \
         'Please use exit or quit if possible.'
     else
-      warn 'IGVs started outside of a Ruby program cannot be terminated.'
+      warn \
+        'The kill method terminates only IGV commands invoked by the start method.' \
+        'Otherwise, use exit or quit.'
       return
     end
     pgid = @pgid_igv
@@ -51,6 +64,13 @@ class IGV
   def connect
     @socket&.close
     @socket = Socket.tcp(host, port)
+  end
+
+  # Close the socket.
+  # This method dose not exit IGV.
+
+  def close
+    @socket&.close
   end
 
   # Show IGV batch commands in the browser.
