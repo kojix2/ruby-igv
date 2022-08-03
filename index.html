@@ -95,10 +95,21 @@
 
 <h2 id="label-Usage">Usage</h2>
 
+<h3 id="label-docs">docs</h3>
+
 <p>See <a href="https://github.com/igvteam/igv/wiki/Batch-commands">the list of Batch commands</a>.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_commands'>commands</span> <span class='comment'># Show the IGV command reference in your browser
 </span></code></pre>
+
+<p><a href="https://rubydoc.info/gems/ruby-igv">docs</a></p>
+
+<h3 id="label-send">send</h3>
+
+<p>Not all commands are implemented in Ruby. Commands that are not implemented can be sent using the send method.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>maxPanelHeight</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>10</span><span class='rparen'>)</span>
+</code></pre>
 
 <h3 id="label-Launch+IGV">Launch IGV</h3>
 
@@ -149,7 +160,7 @@ If so, please feel free to contact me @kojix2.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Aug  3 08:12:53 2022 by
+  Generated on Wed Aug  3 08:19:34 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
