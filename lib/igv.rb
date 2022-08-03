@@ -138,6 +138,11 @@ class IGV
     send :expand, track
   end
 
+  # Collapses a given track.
+  #
+  # @param track [String] The track to collapse.
+  #                       If not specified, collapses all tracks.
+
   def collapse(track = nil)
     send :collapse, track
   end
