@@ -7,9 +7,9 @@
 
 Ruby-IGV is a simple tool for controlling the Integrated Genomics Viewer (IGV) from the Ruby language. It provides an automated way to load files, specify genome locations, and take and save screenshots using IGV.
 
-<img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" align="right">
-
 ## Installation
+
+<img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" width="300" align="right">
 
 Requirement : 
 
@@ -24,7 +24,7 @@ gem install ruby-igv
 
 ## Quickstart
 
-<img src="https://user-images.githubusercontent.com/5798442/182623864-a9fa59aa-abb9-4cb1-8311-2b3479b7414e.png" width="300" align="left">
+<img src="https://user-images.githubusercontent.com/5798442/182623864-a9fa59aa-abb9-4cb1-8311-2b3479b7414e.png" width="300" align="right">
 
 ```ruby
 require 'igv'
@@ -42,9 +42,9 @@ igv.snapshot 'region.png'
 
 ## Usage
 
-### commands
+### IGV batch commands
 
-The commonly used commands in IGV are summarized in the official [list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-commands). (but even this does not seem to be all of them). You can also call the `commands` method from Ruby to open a browser and view the list.
+The commonly used commands in IGV are summarized in the official [list of batch commands](https://github.com/igvteam/igv/wiki/Batch-commands). (but even this does not seem to be all of them). You can also call the `commands` method from Ruby to open a browser and view the list.
 
 ```ruby
 igv.commands # Show the IGV command reference in your browser
@@ -52,7 +52,7 @@ igv.commands # Show the IGV command reference in your browser
 
 ### docs
 
-See [docs](https://rubydoc.info/gems/ruby-igv/IGV). Not all commands are implemented in Ruby.
+See [yard docs](https://rubydoc.info/gems/ruby-igv/IGV). Commonly used IGV batch commands can be called from Ruby methods of the same name. However, not all IGV batch commands are implemented in Ruby. Use the `send` method described below.
 
 ### send
 
@@ -62,6 +62,8 @@ Commands that are not implemented can be sent using the send method.
 igv.send("maxPanelHeight", 10)
 ```
 
+To avoid unexpected behavior, ruby-igv does not use the `method_missing` mechanism.
+
 ### Launch IGV
 
 Launch IGV from Ruby script.
@@ -70,11 +72,39 @@ Launch IGV from Ruby script.
 igv = IGV.start # launch IGV app using spawn
 ```
 
+You can specify the port.
+
+```ruby
+igv = IGV.start(port: 60152)
+```
+
+If you start IGV in this way, you can force IGV to terminate by calling the kill method.
+
+```ruby
+igv.kill
+```
+
 ### Open socket connection to IGV
+
+If IGV is already running, use `new` or `open`.
+
+new
 
 ```ruby
 igv = IGV.new   # create an IGV object. Then you will type `igv.connect`
+igv = IGV.new(host: "127.0.0.1", port: 60151, snapshot_dir: "~/igv_snapshot")
+igv.connect # To start a connection, call connect explicitly.
+igv.close
+```
+
+open
+
+```ruby
 igv = IGV.open  # create an IGV object and connect it to an already activated IGV.
+igv.close
+IGV.open(host: "127.0.0.1", port: 60151, snapshot_dir: "~/igv_snapshot") do |igv|
+  # do something
+end # The socket is automatically closed.
 ```
 
 ### Close IGV
@@ -96,7 +126,7 @@ igv.kill        # kill group pid created with IGV.start
 * Suggest or add new features
 
 ```
-Do you need commit rights to my repository?
+Do you need commit rights to this repository?
 Do you want to get admin rights and take over the project?
 If so, please feel free to contact me @kojix2.
 ```
