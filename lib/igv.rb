@@ -360,4 +360,40 @@ class IGV
     file_path = File.expand_path(file_path)
     send :saveSession, file_path
   end
+
+  def set_alt_color(color, track)
+    send :setAltColor, color, track
+  end
+
+  def set_color(color, track)
+    send :setColor, color, track
+  end
+
+  def set_data_range(range, track)
+    send :setDataRange, range, track
+  end
+
+  def set_log_scale(bool, track)
+    bool = 'true' if bool == true
+    bool = 'false' if bool == false
+    send :setLogScale, bool, track
+  end
+
+  def set_sequence_strand(strand)
+    send :setSequenceStrand, strand
+  end
+
+  def set_sequence_show_translation(bool)
+    bool = 'true' if bool == true
+    bool = 'false' if bool == false
+    send :setSequenceShowTranslation, bool
+  end
+
+  def set_sleep_interval(ms)
+    send :setSleepInterval, ms
+  end
+
+  def set_track_height(height, track)
+    send :setTrackHeight, height, track
+  end
 end
