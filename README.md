@@ -18,7 +18,8 @@ gem install ruby-igv
 [Enable IGV to listen on the port](https://software.broadinstitute.org/software/igv/Preferences#Advanced): Preference > Advanced > Enable port
 
 ```ruby
-igv = IGV.new
+igv = IGV.open
+
 igv.genome 'hg19'
 igv.load   'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam'
 igv.go     'chr18:78,016,233-78,016,640'
@@ -33,6 +34,19 @@ See [the list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-comma
 
 ```ruby
 igv.commands # Show the IGV command reference in your browser
+```
+
+### Launch IGV
+
+```
+igv = IGV.start # launch IGV app using spawn
+igv = IGV.new   # create an IGV object.
+igv = IGV.open  # create an IGV object and connect it to an already activated IGV.
+
+igv.close       # disconnect the socket
+igv.exit        # send exit command
+igv.quit        # alias method to exit
+igv.kill        # kill group pid created with IGV.start
 ```
 
 ## Contributing
