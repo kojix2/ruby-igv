@@ -141,6 +141,19 @@ class IGV
     @socket.gets&.chomp("\n")
   end
 
+  # Syntactic sugar for IGV commands that begin with set.
+  # 
+  # @example
+  #   igv.set :SleepInterval, 100
+  #   igv.send "setSleepInterval", 100 # same as above
+  # @param cmd [String, Symbol] batch commands
+  # @param *params [String, Symbol, Numeric] batch commands
+
+  def set(cmd, *params)
+    cmd = "set#{cmd}"
+    send(cmd, *params)
+  end
+
   # Show IGV batch commands in the browser.
   # https://github.com/igvteam/igv/wiki/Batch-commands
 
