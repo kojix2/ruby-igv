@@ -29,11 +29,11 @@ gem install ruby-igv
 require 'igv'
 
 igv = IGV.start # This launch IGV
-igv.genome 'hg19'
-igv.load   'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/' \
-           'wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam'
-igv.go     'chr18:78,016,233-78,016,640'
-igv.save   'region.png'
+igv.genome   'hg19'
+igv.load     'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/' \
+             'wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam'
+igv.go       'chr18:78,016,233-78,016,640'
+igv.snapshot 'region.png'
 igv.exit
 ```
 

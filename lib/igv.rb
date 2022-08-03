@@ -208,7 +208,7 @@ class IGV
   end
   alias set_snapshot_dir snapshot_dir=
 
-  def save(file_path = nil)
+  def snapshot(file_path = nil)
     return send(:snapshot) if file_path.nil?
 
     dir_path = File.dirname(file_path)
@@ -216,5 +216,4 @@ class IGV
     set_snapshot_dir(dir_path)
     send :snapshot, File.basename(filename)
   end
-  alias snapshot save
 end
