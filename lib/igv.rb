@@ -89,7 +89,7 @@ class IGV
       .compact
       .map do |cmd|
         case cmd
-        when String, Symbol                   then cmd.to_s
+        when String, Symbol, Numeric          then cmd.to_s
         when ->(c) { c.respond_to?(:to_str) } then cmd.to_str
         else raise ArgumentError, "#{cmd.inspect} is not a string"
         end.strip.encode(Encoding::UTF_8)
