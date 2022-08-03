@@ -11,12 +11,29 @@ class IGV
 
   attr_reader :host, :port, :history
 
+  # Create IGV client object
+  # 
+  # @param host [String] hostname or IP address of IGV server
+  # @param port [Integer] port number of IGV server
+  # @param path [String] directory path to save snapshots
+  # @return [IGV] IGV client object
+
   def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
+    raise ArgumentError, "new dose not take a block" if block_given?
     @host = host
     @port = port
     @snapshot_dir = File.expand_path(snapshot_dir)
     @history = []
   end
+
+  # Create IGV object and connect to IGV server
+  # This method accepts a block.
+  #
+  # @param host [String] hostname or IP address of IGV server
+  # @param port [Integer] port number of IGV server
+  # @param path [String] directory path to save snapshots
+  # @return [IGV] IGV client object
+  # @yield [IGV] IGV client object
 
   def self.open(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
     igv = new(host: host, port: port, snapshot_dir: snapshot_dir)
@@ -32,8 +49,18 @@ class IGV
   end
 
   # Launch IGV from ruby script
+  #
+  # @param port [Integer] port number
+  # @param command [String] command to launch IGV
+  # @param snapshot_dir [String] directory path to save snapshots
+  # @return [IGV] IGV client object
 
-  def self.start(port: 60_151, command: 'igv')
+  def self.start(port: 60_151, command: 'igv', snapshot_dir: Dir.pwd)
+    case port_open?(port)
+    when nil   then warn "Cannot tell if port #{port} is open"
+    when false then raise("Port #{port} is already in use")
+    when true  then warn "Port #{port} is available"
+    end
     r, w = IO.pipe
     pid_igv = spawn(command, '-p', port.to_s, pgroup: true, out: w, err: w)
     pgid_igv = Process.getpgid(pid_igv)
@@ -44,7 +71,7 @@ class IGV
       break if line.include? "Listening on port #{port}"
     end
     puts "\e[0m"
-    igv = open(port: port)
+    igv = open(port: port, snapshot_dir: snapshot_dir)
     igv.instance_variable_set(:@pgid_igv, pgid_igv)
     igv
   end
@@ -88,7 +115,9 @@ class IGV
   end
 
   # Send batch commands to IGV.
-  # @param [String] cmds
+  #
+  # @param *cmds [String, Symbol, Numeric] batch commands
+  # @return [String] response from IGV
 
   def send(*cmds)
     cmd = \
@@ -296,5 +325,11 @@ class IGV
   def save_session(file_path)
     file_path = File.expand_path(file_path)
     send :saveSession, file_path
+  end
+
+  private
+
+  def port_open?(port)
+    !system("lsof -i:#{port}", out: '/dev/null')
   end
 end
