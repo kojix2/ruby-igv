@@ -38,28 +38,29 @@ igv.exit
 
 ## Usage
 
-### docs
+### commands
 
-See [the list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-commands).
+The commonly used commands in IGV are summarized in the official [list of Batch commands](https://github.com/igvteam/igv/wiki/Batch-commands). (but even this does not seem to be all of them). You can also call the `commands` method from Ruby to open a browser and view the list.
 
 ```ruby
 igv.commands # Show the IGV command reference in your browser
 ```
 
-[docs](https://rubydoc.info/gems/ruby-igv)
+### docs
+
+See [docs](https://rubydoc.info/gems/ruby-igv/IGV). Not all commands are implemented in Ruby.
 
 ### send
 
-Not all commands are implemented in Ruby. Commands that are not implemented can be sent using the send method.
+Commands that are not implemented can be sent using the send method.
 
 ```ruby
 igv.send("maxPanelHeight", 10)
 ```
 
-
 ### Launch IGV
 
-Launch IGV from Ruby scripot.
+Launch IGV from Ruby script.
 
 ```ruby
 igv = IGV.start # launch IGV app using spawn
@@ -78,7 +79,7 @@ The behavior of the following methods is different.
 
 ```ruby
 igv.close       # close the socket connection
-igv.exit        # send exit command to IGV
+igv.exit        # send exit command to IGV then close the socket connection
 igv.quit        # alias method to exit
 igv.kill        # kill group pid created with IGV.start
 ```
