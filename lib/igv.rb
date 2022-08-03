@@ -196,6 +196,24 @@ class IGV
     send :collapse, track
   end
 
+  # Squish a given track.
+  #
+  # @param track [String] The track to squish.
+  #                       If not specified, squishes all tracks.
+
+  def squish(track = nil)
+    send :squish, track
+  end
+
+  # Set the display mode for an alignment track to "View as pairs". 
+  #
+  # @param track [String] The track to set.
+  #                       If not specified, sets all tracks.
+
+  def viewaspairs(track = nil)
+    send :viewaspairs, track
+  end
+
   def clear
     send :clear
   end
