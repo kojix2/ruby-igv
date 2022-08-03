@@ -97,6 +97,10 @@ class IGV
     send :echo, param
   end
 
+  # Go to the specified location
+  #
+  # @param location [String] The location to go to.
+
   def goto(position)
     send :goto, position
   end
@@ -130,8 +134,14 @@ class IGV
     send :load, path_or_url, index
   end
 
-  def region(contig, start, end_)
-    send :region, contig, start, end_
+  # Defines a region of interest bounded by the two loci
+  #
+  # @param chr [String] The chromosome of the region
+  # @param start [Integer] The start position of the region
+  # @param end_ [Integer] The end position of the region
+
+  def region(chr, start, end_)
+    send :region, chr, start, end_
   end
 
   def sort(option = 'base')
