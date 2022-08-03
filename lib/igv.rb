@@ -48,6 +48,11 @@ class IGV
     igv
   end
 
+  def self.port_open?(port)
+    !system("lsof -i:#{port}", out: '/dev/null')
+  end
+  private_class_method :port_open?
+
   # Launch IGV from ruby script
   #
   # @param port [Integer] port number
@@ -325,11 +330,5 @@ class IGV
   def save_session(file_path)
     file_path = File.expand_path(file_path)
     send :saveSession, file_path
-  end
-
-  private
-
-  def port_open?(port)
-    !system("lsof -i:#{port}", out: '/dev/null')
   end
 end
