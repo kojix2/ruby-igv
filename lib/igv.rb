@@ -216,4 +216,30 @@ class IGV
     set_snapshot_dir(dir_path)
     send :snapshot, File.basename(filename)
   end
+
+  # Temporarily set the preference named key to the specified value. 
+  #
+  # @param key [String] The preference name
+  # @param value [String] The preference value
+
+  def preferences(key, value)
+    send :preferences, key, value
+  end
+
+  # Show "preference.tab" in your browser.
+
+  def show_preferences_table
+    require 'launchy'
+    Launchy.open('https://raw.githubusercontent.com/igvteam/igv/master/src/main/resources/org/broad/igv/prefs/preferences.tab')
+  end
+
+  # Save the current session.
+  # It is recommended that a full path be used for filename. IGV release 2.11.1
+  #
+  # @param filename [String] The path to the session file
+
+  def save_session(file_path)
+    file_path = File.expand_path(file_path)
+    send :saveSession, file_path
+  end
 end
