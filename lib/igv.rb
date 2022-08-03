@@ -31,6 +31,8 @@ class IGV
     igv
   end
 
+  # Launch IGV from ruby script
+
   def self.start(port: 60_151, command: 'igv')
     r, w = IO.pipe
     pid_igv = spawn(command, '-p', port.to_s, pgroup: true, out: w, err: w)
@@ -47,6 +49,8 @@ class IGV
     igv
   end
 
+  # Kill IGV process by process group id
+
   def kill
     if instance_variable_defined?(:@pgid_igv)
       warn \
@@ -62,6 +66,8 @@ class IGV
     Process.kill(:TERM, -pgid)
     close
   end
+
+  # Connect to IGV server
 
   def connect(host2 = @host, port2 = @port, connect_timeout: nil)
     @socket&.close
@@ -82,6 +88,7 @@ class IGV
   end
 
   # Send batch commands to IGV.
+  # @param [String] cmds
 
   def send(*cmds)
     cmd = \
