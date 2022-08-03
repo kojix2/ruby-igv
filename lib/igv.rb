@@ -17,8 +17,8 @@ class IGV
     @history = []
   end
 
-  def self.open(host = '127.0.0.1', port = 60_151, **kw)
-    igv = new(host, port, **kw)
+  def self.open(host = '127.0.0.1', port = 60_151)
+    igv = new(host, port)
     igv.connect
     return igv unless block_given?
 
