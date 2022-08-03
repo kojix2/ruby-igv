@@ -36,6 +36,8 @@ igv.snapshot 'region.png'
 igv.exit
 ```
 
+![snapshot](https://user-images.githubusercontent.com/5798442/182622378-bb091cb8-ae27-44eb-bc96-563312014329.png)
+
 ## Usage
 
 ### commands
