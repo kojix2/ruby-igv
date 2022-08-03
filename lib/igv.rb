@@ -41,7 +41,7 @@ class IGV
       break if line.include? 'Listening on port 60151'
     end
     puts "\e[0m"
-    igv = new
+    igv = open
     igv.instance_variable_set(:@pgid_igv, pgid_igv)
     igv
   end
@@ -59,11 +59,12 @@ class IGV
     end
     pgid = @pgid_igv
     Process.kill(:TERM, -pgid)
+    close
   end
 
-  def connect
+  def connect(host2 = @host, port2 = @port, connect_timeout: nil)
     @socket&.close
-    @socket = Socket.tcp(host, port)
+    @socket = Socket.tcp(host2, port2, connect_timeout: connect_timeout)
   end
 
   # Close the socket.
@@ -176,7 +177,7 @@ class IGV
 
     dir_path = File.dirname(file_path)
     filename = File.basename(file_path)
-    snapshot_dir = dir_path
+    set_snapshot_dir(dir_path)
     send :snapshot, File.basename(filename)
   end
   alias snapshot save
