@@ -62,28 +62,31 @@
 
 <p><a href="https://badge.fury.io/rb/ruby-igv"><img src="https://badge.fury.io/rb/ruby-igv.svg"></a> <a href="https://rubydoc.info/gems/ruby-igv"><img src="https://img.shields.io/badge/docs-latest-blue.svg"></a> <a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-MIT-orange.svg"></a> <a href="https://zenodo.org/badge/latestdoi/281373245"><img src="https://zenodo.org/badge/281373245.svg"></a></p>
 
+<p>&lt;img src=“<img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" />” align=“right”&gt;</p>
+
 <h2 id="label-Installation">Installation</h2>
 
-<p>Requirement: <a href="http://software.broadinstitute.org/software/igv/">IGV (Integrative Genomics Viewer)</a> and <a href="https://github.com/ruby/ruby">Ruby</a>.</p>
+<p>Requirement : <a href="http://software.broadinstitute.org/software/igv/">IGV (Integrative Genomics Viewer)</a> and <a href="https://github.com/ruby/ruby">Ruby</a>.</p>
+
+<p><a href="https://software.broadinstitute.org/software/igv/Preferences#Advanced">Enable IGV to listen on the port</a> : View &gt; Preference &gt; Advanced &gt; Enable port</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_ruby'>ruby</span><span class='op'>-</span><span class='id identifier rubyid_igv'>igv</span>
 </code></pre>
 
-<h2 id="label-Usage">Usage</h2>
+<h2 id="label-Quickstart">Quickstart</h2>
 
-<p><a href="https://software.broadinstitute.org/software/igv/Preferences#Advanced">Enable IGV to listen on the port</a>: Preference &gt; Advanced &gt; Enable port</p>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>igv</span><span class='tstring_end'>&#39;</span></span>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_open'><span class='object_link'><a href="IGV.html#open-class_method" title="IGV.open (method)">open</a></span></span>
-
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_genome'>genome</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hg19</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="IGV.html#start-class_method" title="IGV.start (method)">start</a></span></span> <span class='comment'># This launch IGV
+</span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_genome'>genome</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hg19</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/</span><span class='tstring_end'>&#39;</span></span> \
+           <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wgEncodeUwRepliSeq/wgEncodeUwRepliSeqK562G1AlnRep1.bam</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_go'>go</span>     <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>chr18:78,016,233-78,016,640</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/tmp/r/region.svg</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/tmp/r/region.png</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_snapshot_dir'>snapshot_dir</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/tmp/r2/</span><span class='tstring_end'>&#39;</span></span>
-<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>region.jpg</span><span class='tstring_end'>&#39;</span></span>  <span class='comment'># save to /tmp/r2/region.png
-</span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>echo</span><span class='tstring_end'>&#39;</span></span>        <span class='comment'># whatever you want
-</span></code></pre>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>region.png</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span>
+</code></pre>
+
+<h2 id="label-Usage">Usage</h2>
 
 <p>See <a href="https://github.com/igvteam/igv/wiki/Batch-commands">the list of Batch commands</a>.</p>
 
@@ -97,15 +100,15 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="IGV.html#start-class_method" title="IGV.start (method)">start</a></span></span> <span class='comment'># launch IGV app using spawn
 </span></code></pre>
 
-<p>Connects to an already activated IGV.</p>
+<h3 id="label-Open+socket+connection+to+IGV">Open socket connection to IGV</h3>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="IGV.html#initialize-instance_method" title="IGV#initialize (method)">new</a></span></span>   <span class='comment'># create an IGV object.
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="IGV.html#initialize-instance_method" title="IGV#initialize (method)">new</a></span></span>   <span class='comment'># create an IGV object. Then you will type `igv.connect`
 </span><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_open'><span class='object_link'><a href="IGV.html#open-class_method" title="IGV.open (method)">open</a></span></span>  <span class='comment'># create an IGV object and connect it to an already activated IGV.
 </span></code></pre>
 
-<p>The behavior of the following methods is different.</p>
-
 <h3 id="label-Close+IGV">Close IGV</h3>
+
+<p>The behavior of the following methods is different.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>       <span class='comment'># close the socket connection
 </span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span>        <span class='comment'># send exit command to IGV
@@ -139,7 +142,7 @@ If so, please feel free to contact me @kojix2.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Aug  3 06:57:09 2022 by
+  Generated on Wed Aug  3 07:05:26 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
