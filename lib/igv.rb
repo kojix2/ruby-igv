@@ -12,14 +12,15 @@ class IGV
   attr_reader :host, :port, :history
 
   # Create IGV client object
-  # 
+  #
   # @param host [String] hostname or IP address of IGV server
   # @param port [Integer] port number of IGV server
   # @param path [String] directory path to save snapshots
   # @return [IGV] IGV client object
 
   def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
-    raise ArgumentError, "new dose not take a block" if block_given?
+    raise ArgumentError, 'new dose not take a block' if block_given?
+
     @host = host
     @port = port
     @snapshot_dir = File.expand_path(snapshot_dir)
@@ -142,7 +143,7 @@ class IGV
   end
 
   # Syntactic sugar for IGV commands that begin with set.
-  # 
+  #
   # @example
   #   igv.set :SleepInterval, 100
   #   igv.send "setSleepInterval", 100 # same as above
@@ -163,6 +164,7 @@ class IGV
   end
 
   # Writes the value of "param" back to the response
+  # @note IGV Batch command
   #
   # @param param [String] The parameter to echo.
   # @return [String] The value of "param". If param is not specified, "echo".
@@ -172,6 +174,7 @@ class IGV
   end
 
   # Selects a genome by id, or loads a genome (or indexed fasta) from the supplied path.
+  # @note IGV Batch command
   #
   # @param name_or_path [String] The genome to load
 
@@ -185,6 +188,7 @@ class IGV
   end
 
   # Loads a data or session file by specifying a full path to a local file or a URL.
+  # @note IGV Batch command
   #
   # @param path_or_url [String] The path to a local file or a URL
   # @param index [String] The index of the file
@@ -200,6 +204,7 @@ class IGV
   end
 
   # Go to the specified location
+  # @note IGV Batch command
   #
   # @param location [String] The location to go to.
 
@@ -209,6 +214,7 @@ class IGV
   alias go goto
 
   # Defines a region of interest bounded by the two loci
+  # @note IGV Batch command
   #
   # @param chr [String] The chromosome of the region
   # @param start [Integer] The start position of the region
@@ -226,6 +232,7 @@ class IGV
   end
 
   # Expands the given track.
+  # @note IGV Batch command
   #
   # @param track [String] The track to expand.
   #                       If not specified, expands all tracks.
@@ -235,6 +242,7 @@ class IGV
   end
 
   # Collapses a given track.
+  # @note IGV Batch command
   #
   # @param track [String] The track to collapse.
   #                       If not specified, collapses all tracks.
@@ -244,6 +252,7 @@ class IGV
   end
 
   # Squish a given track.
+  # @note IGV Batch command
   #
   # @param track [String] The track to squish.
   #                       If not specified, squishes all tracks.
@@ -252,7 +261,7 @@ class IGV
     send :squish, track
   end
 
-  # Set the display mode for an alignment track to "View as pairs". 
+  # Set the display mode for an alignment track to "View as pairs".
   #
   # @param track [String] The track to set.
   #                       If not specified, sets all tracks.
@@ -261,11 +270,14 @@ class IGV
     send :viewaspairs, track
   end
 
+  # @note IGV Batch command
+
   def clear
     send :clear
   end
 
-  # Exit (close) the IGV application.
+  # Exit (close) the IGV application and close the socket.
+  # @note IGV Batch command (modifyed)
 
   def exit
     send :exit
@@ -275,6 +287,7 @@ class IGV
 
   #	Sets the directory in which to write images.
   # Retruns the current snapshot directory if no argument is given.
+  # @note IGV Batch command (modified)
   #
   # @param path [String] The path to the directory.
 
@@ -299,6 +312,7 @@ class IGV
   # If filename is omitted, writes a PNG file with a filename generated based on the locus.
   # If filename is specified, the filename extension determines the image file format,
   # which must be either .png or .svg.
+  # @note IGV Batch command (modified)
   # @note In Ruby-IGV, it is possible to pass absolute or relative paths as well as file names;
   #       the Snapshot directory is set to Dir.pwd by default.
   #
@@ -320,6 +334,7 @@ class IGV
   end
 
   # Temporarily set the preference named key to the specified value.
+  # @note IGV Batch command
   #
   # @param key [String] The preference name
   # @param value [String] The preference value
@@ -337,6 +352,7 @@ class IGV
 
   # Save the current session.
   # It is recommended that a full path be used for filename. IGV release 2.11.1
+  # @note IGV Batch command
   #
   # @param filename [String] The path to the session file
 
