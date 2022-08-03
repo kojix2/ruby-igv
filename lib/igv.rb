@@ -11,15 +11,15 @@ class IGV
 
   attr_reader :host, :port, :history
 
-  def initialize(host = '127.0.0.1', port = 60_151, snapshot_dir: Dir.pwd)
+  def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
     @host = host
     @port = port
     @snapshot_dir = File.expand_path(snapshot_dir)
     @history = []
   end
 
-  def self.open(host = '127.0.0.1', port = 60_151)
-    igv = new(host, port)
+  def self.open(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
+    igv = new(host: host, port: port, snapshot_dir: snapshot_dir)
     igv.connect
     return igv unless block_given?
 
@@ -31,18 +31,18 @@ class IGV
     igv
   end
 
-  def self.start
+  def self.start(port: 60_151, command: 'igv')
     r, w = IO.pipe
-    pid_igv = spawn('igv', '-p', '60151', pgroup: true, out: w, err: w)
+    pid_igv = spawn(command, '-p', port.to_s, pgroup: true, out: w, err: w)
     pgid_igv = Process.getpgid(pid_igv)
     Process.detach(pid_igv)
     puts "\e[33m"
     while (line = r.gets.chomp("\n"))
       puts line
-      break if line.include? 'Listening on port 60151'
+      break if line.include? "Listening on port #{port}"
     end
     puts "\e[0m"
-    igv = open
+    igv = open(port: port)
     igv.instance_variable_set(:@pgid_igv, pgid_igv)
     igv
   end
@@ -208,6 +208,7 @@ class IGV
 
   def snapshot_dir(dir_path = nil)
     return @snapshot_dir if dir_path.nil?
+
     dir_path = File.expand_path(dir_path)
     return if dir_path == @snapshot_dir
 
@@ -224,7 +225,7 @@ class IGV
 
   # Saves a snapshot of the IGV window to an image file.
   # If filename is omitted, writes a PNG file with a filename generated based on the locus.
-  # If filename is specified, the filename extension determines the image file format, 
+  # If filename is specified, the filename extension determines the image file format,
   # which must be either .png or .svg.
   # @note In Ruby-IGV, it is possible to pass absolute or relative paths as well as file names;
   #       the Snapshot directory is set to Dir.pwd by default.
@@ -246,7 +247,7 @@ class IGV
     end
   end
 
-  # Temporarily set the preference named key to the specified value. 
+  # Temporarily set the preference named key to the specified value.
   #
   # @param key [String] The preference name
   # @param value [String] The preference value
