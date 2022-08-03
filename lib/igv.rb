@@ -151,8 +151,11 @@ class IGV
     send :clear
   end
 
+  # Exit (close) the IGV application.
+
   def exit
     send :exit
+    @socket.close
   end
   alias quit exit
 
