@@ -272,6 +272,12 @@ class IGV
 
   # @note IGV Batch command
 
+  def new
+    send :new
+  end
+
+  # @note IGV Batch command
+
   def clear
     send :clear
   end
@@ -361,17 +367,25 @@ class IGV
     send :saveSession, file_path
   end
 
+  # @note IGV Batch command
+
   def set_alt_color(color, track)
     send :setAltColor, color, track
   end
+
+  # @note IGV Batch command
 
   def set_color(color, track)
     send :setColor, color, track
   end
 
+  # @note IGV Batch command
+
   def set_data_range(range, track)
     send :setDataRange, range, track
   end
+
+  # @note IGV Batch command
 
   def set_log_scale(bool, track)
     bool = 'true' if bool == true
@@ -379,9 +393,13 @@ class IGV
     send :setLogScale, bool, track
   end
 
+  # @note IGV Batch command
+
   def set_sequence_strand(strand)
     send :setSequenceStrand, strand
   end
+
+  # @note IGV Batch command
 
   def set_sequence_show_translation(bool)
     bool = 'true' if bool == true
@@ -389,25 +407,37 @@ class IGV
     send :setSequenceShowTranslation, bool
   end
 
+  # @note IGV Batch command
+
   def set_sleep_interval(ms)
     send :setSleepInterval, ms
   end
+
+  # @note IGV Batch command
 
   def set_track_height(height, track)
     send :setTrackHeight, height, track
   end
 
+  # @note IGV Batch command
+
   def max_panel_height(height)
     send :maxPanelHeight, height
   end
+
+  # @note IGV Batch command
 
   def color_by(option, tag)
     send :colorBy, option, tag
   end
 
+  # @note IGV Batch command
+
   def group(option, tag)
     send :group, option, tag
   end
+
+  # @note IGV Batch command
 
   def overlay(overlaid_track, *tracks)
     send :overlay, overlaid_track, *tracks
