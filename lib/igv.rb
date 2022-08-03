@@ -208,8 +208,8 @@ class IGV
   #
   # @param location [String] The location to go to.
 
-  def goto(position)
-    send :goto, position
+  def goto(*position)
+    send :goto, *position
   end
   alias go goto
 
@@ -395,5 +395,21 @@ class IGV
 
   def set_track_height(height, track)
     send :setTrackHeight, height, track
+  end
+
+  def max_panel_height(height)
+    send :maxPanelHeight, height
+  end
+
+  def color_by(option, tag)
+    send :colorBy, option, tag
+  end
+
+  def group(option, tag)
+    send :group, option, tag
+  end
+
+  def overlay(overlaid_track, *tracks)
+    send :overlay, overlaid_track, *tracks
   end
 end
