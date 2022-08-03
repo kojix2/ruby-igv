@@ -97,25 +97,27 @@
 
 <h2 id="label-Usage">Usage</h2>
 
-<h3 id="label-docs">docs</h3>
+<h3 id="label-commands">commands</h3>
 
-<p>See <a href="https://github.com/igvteam/igv/wiki/Batch-commands">the list of Batch commands</a>.</p>
+<p>The commonly used commands in IGV are summarized in the official <a href="https://github.com/igvteam/igv/wiki/Batch-commands">list of Batch commands</a>. (but even this does not seem to be all of them). You can also call the <code>commands</code> method from Ruby to open a browser and view the list.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_commands'>commands</span> <span class='comment'># Show the IGV command reference in your browser
 </span></code></pre>
 
-<p><a href="https://rubydoc.info/gems/ruby-igv">docs</a></p>
+<h3 id="label-docs">docs</h3>
+
+<p>See <a href="https://rubydoc.info/gems/ruby-igv/IGV">docs</a>. Not all commands are implemented in Ruby.</p>
 
 <h3 id="label-send">send</h3>
 
-<p>Not all commands are implemented in Ruby. Commands that are not implemented can be sent using the send method.</p>
+<p>Commands that are not implemented can be sent using the send method.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>maxPanelHeight</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>10</span><span class='rparen'>)</span>
 </code></pre>
 
 <h3 id="label-Launch+IGV">Launch IGV</h3>
 
-<p>Launch IGV from Ruby scripot.</p>
+<p>Launch IGV from Ruby script.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IGV.html" title="IGV (class)">IGV</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="IGV.html#start-class_method" title="IGV.start (method)">start</a></span></span> <span class='comment'># launch IGV app using spawn
 </span></code></pre>
@@ -131,7 +133,7 @@
 <p>The behavior of the following methods is different.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>       <span class='comment'># close the socket connection
-</span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span>        <span class='comment'># send exit command to IGV
+</span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_exit'>exit</span>        <span class='comment'># send exit command to IGV then close the socket connection
 </span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_quit'>quit</span>        <span class='comment'># alias method to exit
 </span><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_kill'>kill</span>        <span class='comment'># kill group pid created with IGV.start
 </span></code></pre>
@@ -162,7 +164,7 @@ If so, please feel free to contact me @kojix2.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Aug  3 12:34:02 2022 by
+  Generated on Wed Aug  3 12:43:40 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
