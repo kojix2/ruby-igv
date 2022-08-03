@@ -235,9 +235,9 @@ class IGV
     dir_path = File.dirname(file_path)
     filename = File.basename(file_path)
     if dir_path != @snapshot_dir
-      set_snapshot_dir_internal(dir_path)
+      snapshot_dir_internal(dir_path)
       r = send :snapshot, filename
-      set_snapshot_dir_internal(@snapshot_dir)
+      snapshot_dir_internal(@snapshot_dir)
       r
     else
       send :snapshot, filename
