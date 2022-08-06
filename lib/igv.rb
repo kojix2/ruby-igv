@@ -50,7 +50,7 @@ class IGV
   end
 
   def self.port_open?(port)
-    !system("lsof -i:#{port}", out: '/dev/null')
+    system("lsof -i:#{port}", out: '/dev/null')
   end
   private_class_method :port_open?
 
@@ -64,8 +64,8 @@ class IGV
   def self.start(port: 60_151, command: 'igv', snapshot_dir: Dir.pwd)
     case port_open?(port)
     when nil   then warn "Cannot tell if port #{port} is open"
-    when false then raise("Port #{port} is already in use")
-    when true  then warn "Port #{port} is available"
+    when true  then raise("Port #{port} is already in use")
+    when false then warn "Port #{port} is available"
     end
     r, w = IO.pipe
     pid_igv = spawn(command, '-p', port.to_s, pgroup: true, out: w, err: w)
@@ -77,7 +77,7 @@ class IGV
       break if line.include? "Listening on port #{port}"
     end
     puts "\e[0m"
-    igv = open(port: port, snapshot_dir: snapshot_dir)
+    igv = self.open(port: port, snapshot_dir: snapshot_dir)
     igv.instance_variable_set(:@pgid_igv, pgid_igv)
     igv
   end
@@ -129,11 +129,11 @@ class IGV
     cmd = \
       cmds
       .compact
-      .map do |cmd|
-        case cmd
-        when String, Symbol, Numeric          then cmd.to_s
-        when ->(c) { c.respond_to?(:to_str) } then cmd.to_str
-        else raise ArgumentError, "#{cmd.inspect} is not a string"
+      .map do |cm|
+        case cm
+        when String, Symbol, Numeric          then cm.to_s
+        when ->(c) { c.respond_to?(:to_str) } then cm.to_str
+        else raise ArgumentError, "#{cm.inspect} is not a string"
         end.strip.encode(Encoding::UTF_8)
       end
       .join(' ')
