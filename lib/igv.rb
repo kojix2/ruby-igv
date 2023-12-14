@@ -283,7 +283,7 @@ class IGV
   end
 
   # Exit (close) the IGV application and close the socket.
-  # @note IGV Batch command (modifyed)
+  # @note IGV Batch command (modified)
 
   def exit
     send :exit
@@ -292,7 +292,7 @@ class IGV
   alias quit exit
 
   #	Sets the directory in which to write images.
-  # Retruns the current snapshot directory if no argument is given.
+  # Returns the current snapshot directory if no argument is given.
   # @note IGV Batch command (modified)
   #
   # @param path [String] The path to the directory.
