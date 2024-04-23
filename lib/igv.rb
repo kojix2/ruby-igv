@@ -20,7 +20,7 @@ class IGV
   # @return [IGV] IGV client object
 
   def initialize(host: '127.0.0.1', port: 60_151, snapshot_dir: Dir.pwd)
-    raise ArgumentError, 'new dose not take a block' if block_given?
+    raise ArgumentError, 'IGV#initialize does not accept a block.' if block_given?
 
     @host = host
     @port = port
@@ -202,6 +202,8 @@ class IGV
                   end
     index = "index=#{index}" if index
     send :load, path_or_url, index
+  rescue URI::InvalidURIError
+    raise ArgumentError, "Invalid URI or file path: #{path_or_url}"
   end
 
   # Go to the specified location
