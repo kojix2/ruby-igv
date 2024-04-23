@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'igv/version'
+require 'uri'
 require 'socket'
 require 'fileutils'
 
