@@ -67,6 +67,7 @@ class IGV
     when nil   then warn "Cannot tell if port #{port} is open"
     when true  then raise("Port #{port} is already in use")
     when false then warn "Port #{port} is available"
+    else raise "Unexpected return value from port_open?(#{port})"
     end
     r, w = IO.pipe
     pid_igv = spawn(command, '-p', port.to_s, pgroup: true, out: w, err: w)
