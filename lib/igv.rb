@@ -162,7 +162,7 @@ class IGV
 
   def commands
     require 'launchy'
-    Launchy.open('https://github.com/igvteam/igv/wiki/Batch-commands')
+    Launchy.open('https://igv.org/doc/desktop/#UserGuide/tools/batch/#script-commands')
   end
 
   # Writes the value of "param" back to the response
