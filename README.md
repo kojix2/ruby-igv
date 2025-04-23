@@ -12,12 +12,12 @@ Ruby-IGV is a simple tool for controlling the Integrated Genomics Viewer (IGV) f
 
 <img src="https://user-images.githubusercontent.com/5798442/182540876-c3ca2906-7d05-4c93-9107-ce4135ae9765.png" width="300" align="right">
 
-Requirement : 
+Requirement :
 
-* [Ruby](https://github.com/ruby/ruby)
-* [IGV (Integrative Genomics Viewer)](http://software.broadinstitute.org/software/igv/)
-  * [Enable IGV to listen on the port](https://software.broadinstitute.org/software/igv/Preferences#Advanced)
-  * View > Preference > Advanced > Enable port ☑
+- [Ruby](https://github.com/ruby/ruby)
+- [IGV (Integrative Genomics Viewer)](http://software.broadinstitute.org/software/igv/)
+  - [Enable IGV to listen on the port](https://software.broadinstitute.org/software/igv/Preferences#Advanced)
+  - View > Preference > Advanced > Enable port ☑
 
 ```ruby
 gem install ruby-igv
@@ -53,17 +53,34 @@ igv.commands # Show the IGV command reference in your browser
 
 ### docs
 
-See [yard docs](https://rubydoc.info/gems/ruby-igv/IGV). Commonly used IGV batch commands can be called from Ruby methods of the same name. However, not all IGV batch commands are implemented in Ruby. Use the `send` method described below.
+See [yard docs](https://rubydoc.info/gems/ruby-igv/IGV).  
+Most IGV batch commands are available as Ruby methods of the same name.  
+If you need to use a command not directly wrapped, you can use the `send` method as shown below.
 
 ### send
 
-Commands that are not implemented can be sent using the send method.
+You can send any IGV batch command using the `send` method.
 
 ```ruby
 igv.send("maxPanelHeight", 10)
+igv.send("scrollToTop")
+igv.send("setAccessToken", "token", "host")
 ```
 
 To avoid unexpected behavior, ruby-igv does not use the `method_missing` mechanism.
+
+### Supported IGV batch commands
+
+Most official IGV batch commands are available as Ruby methods, including:
+
+- collapse, color_by, echo, exit, expand, genome, goto, group, load, max_panel_height, new, overlay, preference, region, save_session, scroll_to_top, separate, set_alt_color, set_color, set_data_range, set_log_scale, set_sequence_strand, set_sequence_show_translation, set_sleep_interval, set_track_height, snapshot_dir, snapshot, sort, squish, viewaspairs, set_access_token, clear_access_tokens
+
+See the [official IGV batch command list](https://igv.org/doc/desktop/#UserGuide/tools/batch/#script-commands) for details.
+
+### Return values and error handling
+
+Most methods return the IGV response string (e.g. "OK" or an error message).  
+You can check the return value to handle errors or confirm success.
 
 ### Launch IGV
 
@@ -121,10 +138,10 @@ igv.kill        # kill group pid created with IGV.start
 
 ## Contributing
 
-* [Report bugs](https://github.com/kojix2/ruby-igv/issues)
-* Fix bugs and submit [pull requests](https://github.com/kojix2/ruby-igv/pulls)
-* Write, clarify, or fix documentation
-* Suggest or add new features
+- [Report bugs](https://github.com/kojix2/ruby-igv/issues)
+- Fix bugs and submit [pull requests](https://github.com/kojix2/ruby-igv/pulls)
+- Write, clarify, or fix documentation
+- Suggest or add new features
 
 ```
 Do you need commit rights to this repository?
@@ -133,8 +150,10 @@ If so, please feel free to contact me @kojix2.
 ```
 
 ## Acknowledgement
+
 This gem is strongly inspired by a Python script developed by Brent Pedersen.
-* [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
+
+- [brentp/bio-playground/igv](https://github.com/brentp/bio-playground).
 
 ## License
 
