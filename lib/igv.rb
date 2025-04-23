@@ -446,4 +446,31 @@ class IGV
   def overlay(overlaid_track, *tracks)
     send :overlay, overlaid_track, *tracks
   end
+
+  # @note IGV Batch command
+  # Scroll all panels to the top of the view.
+  def scroll_to_top
+    send :scrollToTop
+  end
+
+  # @note IGV Batch command
+  # Separate an overlaid track into its constituitive tracks.
+  # @param overlaid_track_name [String] The name of the overlaid track to separate.
+  def separate(overlaid_track_name)
+    send :separate, overlaid_track_name
+  end
+
+  # @note IGV Batch command
+  # Set an access token to be used in an Authorization header for all requests to host.
+  # @param token [String] The access token.
+  # @param host [String, nil] The host to use the token for (optional).
+  def set_access_token(token, host = nil)
+    send :setAccessToken, token, host
+  end
+
+  # @note IGV Batch command
+  # Clears all access tokens.
+  def clear_access_tokens
+    send :clearAccessTokens
+  end
 end
