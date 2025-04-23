@@ -110,16 +110,31 @@
 
 <h3 id="label-docs">docs</h3>
 
-<p>See <a href="https://rubydoc.info/gems/ruby-igv/IGV">yard docs</a>. Commonly used IGV batch commands can be called from Ruby methods of the same name. However, not all IGV batch commands are implemented in Ruby. Use the <code>send</code> method described below.</p>
+<p>See <a href="https://rubydoc.info/gems/ruby-igv/IGV">yard docs</a>.<br> Most IGV batch commands are available as Ruby methods of the same name.<br> If you need to use a command not directly wrapped, you can use the <code>send</code> method as shown below.</p>
 
 <h3 id="label-send">send</h3>
 
-<p>Commands that are not implemented can be sent using the send method.</p>
+<p>You can send any IGV batch command using the <code>send</code> method.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>maxPanelHeight</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>10</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>scrollToTop</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_igv'>igv</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>setAccessToken</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>host</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 </code></pre>
 
 <p>To avoid unexpected behavior, ruby-igv does not use the <code>method_missing</code> mechanism.</p>
+
+<h3 id="label-Supported+IGV+batch+commands">Supported IGV batch commands</h3>
+
+<p>Most official IGV batch commands are available as Ruby methods, including:</p>
+<ul><li>
+<p>collapse, color_by, echo, exit, expand, genome, goto, group, load, max_panel_height, new, overlay, preference, region, save_session, scroll_to_top, separate, set_alt_color, set_color, set_data_range, set_log_scale, set_sequence_strand, set_sequence_show_translation, set_sleep_interval, set_track_height, snapshot_dir, snapshot, sort, squish, viewaspairs, set_access_token, clear_access_tokens</p>
+</li></ul>
+
+<p>See the <a href="https://igv.org/doc/desktop/#UserGuide/tools/batch/#script-commands">official IGV batch command list</a> for details.</p>
+
+<h3 id="label-Return+values+and+error+handling">Return values and error handling</h3>
+
+<p>Most methods return the IGV response string (e.g. “OK” or an error message).<br> You can check the return value to handle errors or confirm success.</p>
 
 <h3 id="label-Launch+IGV">Launch IGV</h3>
 
@@ -187,7 +202,10 @@ If so, please feel free to contact me @kojix2.
 
 <h2 id="label-Acknowledgement">Acknowledgement</h2>
 
-<p>This gem is strongly inspired by a Python script developed by Brent Pedersen. * <a href="https://github.com/brentp/bio-playground">brentp/bio-playground/igv</a>.</p>
+<p>This gem is strongly inspired by a Python script developed by Brent Pedersen.</p>
+<ul><li>
+<p><a href="https://github.com/brentp/bio-playground">brentp/bio-playground/igv</a>.</p>
+</li></ul>
 
 <h2 id="label-License">License</h2>
 
@@ -195,7 +213,7 @@ If so, please feel free to contact me @kojix2.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Apr 23 10:50:12 2025 by
+  Generated on Wed Apr 23 10:55:21 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.3).
 </div>
