@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+
+      - name: Install IGV
+        run: sudo apt-get update && sudo apt-get install -y igv
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Start IGV with Xvfb
+        run: |
+          nohup xvfb-run -a igv -p 60151 > igv.log 2>&1 &
+          sleep 15
+
+      - name: Run tests
+        run: IGV_TEST_MODE=external bundle exec rake test
+
+      - name: Show IGV log (on failure)
+        if: failure()
+        run: cat igv.log
