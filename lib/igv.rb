@@ -90,9 +90,6 @@ class IGV
   # Kill IGV process by process group id.
   #
   # @note Only works for IGV processes started by IGV.start.
-  # Kill IGV process by process group id.
-  #
-  # @note Only works for IGV processes started by IGV.start.
   # @return [nil] Kills the IGV process if started by this client, otherwise does nothing.
   def kill
     if instance_variable_defined?(:@pgid_igv)
@@ -315,12 +312,6 @@ class IGV
   # Create a new session. Unloads all tracks except the default genome annotations.
   #
   # @note IGV Batch command: new
-  # @return [String] IGV response.
-  # @example
-  #   igv.new
-  # Create a new session. Unloads all tracks except the default genome annotations.
-  #
-  # @note IGV Batch command: new
   # @return [self] Returns self for method chaining.
   # @example
   #   igv.new
@@ -329,12 +320,6 @@ class IGV
     self
   end
 
-  # Clear all loaded tracks and data.
-  #
-  # @note IGV Batch command: clear
-  # @return [String] IGV response.
-  # @example
-  #   igv.clear
   # Clear all loaded tracks and data.
   #
   # @note IGV Batch command: clear
