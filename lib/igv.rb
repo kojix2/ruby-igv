@@ -67,9 +67,9 @@ class IGV
   # @note This will spawn a new IGV process and connect to it.
   def self.start(port: 60_151, command: 'igv', snapshot_dir: Dir.pwd)
     case port_open?(port)
-    when nil   then warn "Cannot tell if port #{port} is open"
+    when nil   then warn "[ruby-igv] Cannot tell if port #{port} is open"
     when true  then raise("Port #{port} is already in use")
-    when false then warn "Port #{port} is available"
+    when false then warn "[ruby-igv] Port #{port} is available"
     else raise "Unexpected return value from port_open?(#{port})"
     end
     r, w = IO.pipe
@@ -93,9 +93,9 @@ class IGV
   # @return [nil] Kills the IGV process if started by this client, otherwise does nothing.
   def kill
     if instance_variable_defined?(:@pgid_igv)
-      warn 'This method kills the process with the group ID specified at startup. Please use exit or quit if possible.'
+      warn '[ruby-igv] This method kills the process with the group ID specified at startup. Please use exit or quit if possible.'
     else
-      warn 'The kill method terminates only IGV commands invoked by the start method. Otherwise, use exit or quit.'
+      warn '[ruby-igv] The kill method terminates only IGV commands invoked by the start method. Otherwise, use exit or quit.'
       return nil
     end
     pgid = @pgid_igv
@@ -225,12 +225,12 @@ class IGV
   # Go to the specified location or list of loci.
   #
   # @note IGV Batch command: goto
-  # @param position [Array<String>] Locus or list of loci (e.g. "chr1:1000-2000").
+  # @param position [String] Locus or list of loci (e.g. "chr1:1000-2000").
   # @return [String] IGV response.
   # @example
   #   igv.goto("chr1:1000-2000")
-  def goto(*position)
-    send :goto, *position
+  def goto(position)
+    send :goto, position
   end
   alias go goto
 
@@ -365,6 +365,7 @@ class IGV
 
   private def snapshot_dir_internal(dir_path)
     dir_path = File.expand_path(dir_path)
+    warn "[ruby-igv] Directory #{dir_path} does not exist. Creating it." unless File.exist?(dir_path)
     FileUtils.mkdir_p(dir_path)
     send :snapshotDirectory, dir_path
   end
@@ -372,22 +373,41 @@ class IGV
   # Save a snapshot of the IGV window to an image file.
   #
   # @note IGV Batch command: snapshot
-  # @param file_path [String, nil] Path to the image file. If omitted, a PNG file is generated based on the locus.
-  # @return [String] IGV response.
+  # @param file_name [String, nil] Name of the image file. If nil, uses the current locus.
+  #   If filename is omitted, writes a PNG file with a filename generated based on the locus.
+  #   If filename is specified, the filename extension determines the image file format, which must be either .png or .svg.
+  #   Passing a path might work, but is not recommended.
   # @example
   #   igv.snapshot("region.png")
-  def snapshot(file_path = nil)
-    return send(:snapshot) if file_path.nil?
+  def snapshot(file_name = nil)
+    return send(:snapshot) if file_name.nil?
+    dir_path = File.dirname(file_name)
 
-    dir_path = File.dirname(file_path)
-    filename = File.basename(file_path)
-    if dir_path != @snapshot_dir
-      snapshot_dir_internal(dir_path)
-      r = send :snapshot, filename
-      snapshot_dir_internal(@snapshot_dir)
-      r
+    # file_name is a file name
+    return send(:snapshot, file_name) if dir_path == "."
+
+    # file_name is a path
+    file_path = file_name
+    warn "[ruby-igv] snapshot: Passing a path is not recommended. "
+
+    if File.absolute_path?(file_path)
+      dir_path = File.expand_path(dir_path)
     else
-      send :snapshot, filename
+      dir_path = File.expand_path(File.join(@snapshot_dir, dir_path))
+    end
+
+    filename = File.basename(file_path)
+    
+    # Only change directory if needed
+    if dir_path == @snapshot_dir
+      send(:snapshot, filename)
+    else
+      # Temporarily change snapshot directory
+      original_dir = @snapshot_dir
+      snapshot_dir_internal(dir_path)
+      result = send(:snapshot, filename)
+      snapshot_dir_internal(original_dir)
+      result
     end
   end
 

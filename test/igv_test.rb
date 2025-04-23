@@ -12,11 +12,20 @@ class IGVTest < Test::Unit::TestCase
            else
              IGV.start
            end
+    @igv.set :SleepInterval, 1000
   end
 
-  def test_echo
-    assert_equal 'echo', @igv.echo
+  def test_igv
     assert_equal 'Hello!', @igv.echo('Hello!')
+    assert_equal 'OK', @igv.genome(File.expand_path('fixtures/moo.fa', __dir__))
+    assert_equal 'OK', @igv.load(File.expand_path('fixtures/moo.bam', __dir__))
+    assert_equal 'OK', @igv.scroll_to_top
+    assert_equal 'OK', @igv.snapshot_dir(File.expand_path('fixtures', __dir__))
+    assert_equal 'OK', @igv.goto('chr1')
+    assert_equal 'OK', @igv.snapshot
+    assert_equal 'OK', @igv.goto('chr2')
+    assert_equal 'OK', @igv.snapshot('test.png')
+    assert_true File.exist?(File.expand_path('fixtures/test.png', __dir__))
   end
 
   def teardown
@@ -24,10 +33,9 @@ class IGVTest < Test::Unit::TestCase
 
     case ENV['IGV_TEST_MODE']
     when 'external'
-      @igv.close
     else
       @igv.kill
-      @igv.close
     end
+    @igv.close
   end
 end
