@@ -53,7 +53,7 @@ igv.commands # Show the IGV command reference in your browser
 
 ### docs
 
-See [yard docs](https://rubydoc.info/gems/ruby-igv/IGV).  
+See [yard docs](https://kojix2.github.io/ruby-igv/).  
 Most IGV batch commands are available as Ruby methods of the same name.  
 If you need to use a command not directly wrapped, you can use the `send` method as shown below.
 
