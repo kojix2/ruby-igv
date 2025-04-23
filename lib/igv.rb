@@ -90,16 +90,21 @@ class IGV
   # Kill IGV process by process group id.
   #
   # @note Only works for IGV processes started by IGV.start.
+  # Kill IGV process by process group id.
+  #
+  # @note Only works for IGV processes started by IGV.start.
+  # @return [nil] Kills the IGV process if started by this client, otherwise does nothing.
   def kill
     if instance_variable_defined?(:@pgid_igv)
       warn 'This method kills the process with the group ID specified at startup. Please use exit or quit if possible.'
     else
       warn 'The kill method terminates only IGV commands invoked by the start method. Otherwise, use exit or quit.'
-      return
+      return nil
     end
     pgid = @pgid_igv
     Process.kill(:TERM, -pgid)
     close
+    nil
   end
 
   # Connect to IGV server.
@@ -107,16 +112,18 @@ class IGV
   # @param host2 [String] Hostname or IP address.
   # @param port2 [Integer] Port number.
   # @param connect_timeout [Integer, nil] Timeout in seconds.
-  # @return [void]
+  # @return [self] Returns self for method chaining.
   def connect(host2 = @host, port2 = @port, connect_timeout: nil)
     @socket&.close
     @socket = Socket.tcp(host2, port2, connect_timeout: connect_timeout)
+    self
   end
 
   # Close the socket. This does not exit IGV.
-  # @return [void]
+  # @return [nil] Closes the socket and returns nil.
   def close
     @socket&.close
+    nil
   end
 
   # Check if the socket is closed.
@@ -164,7 +171,6 @@ class IGV
   end
 
   # Open IGV batch command documentation in the browser.
-  # @return [void]
   def commands
     require 'launchy'
     Launchy.open('https://igv.org/doc/desktop/#UserGuide/tools/batch/#script-commands')
@@ -312,8 +318,15 @@ class IGV
   # @return [String] IGV response.
   # @example
   #   igv.new
+  # Create a new session. Unloads all tracks except the default genome annotations.
+  #
+  # @note IGV Batch command: new
+  # @return [self] Returns self for method chaining.
+  # @example
+  #   igv.new
   def new
     send :new
+    self
   end
 
   # Clear all loaded tracks and data.
@@ -322,19 +335,27 @@ class IGV
   # @return [String] IGV response.
   # @example
   #   igv.clear
+  # Clear all loaded tracks and data.
+  #
+  # @note IGV Batch command: clear
+  # @return [self] Returns self for method chaining.
+  # @example
+  #   igv.clear
   def clear
     send :clear
+    self
   end
 
   # Exit (close) the IGV application and close the socket.
   #
   # @note IGV Batch command: exit
-  # @return [void]
+  # @return [nil] Exits IGV and closes the socket.
   # @example
   #   igv.exit
   def exit
     send :exit
     @socket.close
+    nil
   end
   alias quit exit
 
@@ -399,7 +420,6 @@ class IGV
   end
 
   # Show "preference.tab" in your browser.
-  # @return [void]
   def show_preferences_table
     require 'launchy'
     Launchy.open('https://raw.githubusercontent.com/igvteam/igv/master/src/main/resources/org/broad/igv/prefs/preferences.tab')
