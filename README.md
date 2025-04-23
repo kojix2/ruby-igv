@@ -45,7 +45,7 @@ igv.snapshot 'region.png'
 
 ### IGV batch commands
 
-The commonly used commands in IGV are summarized in the official [list of batch commands](https://github.com/igvteam/igv/wiki/Batch-commands). (but even this does not seem to be all of them). You can also call the `commands` method from Ruby to open a browser and view the list.
+The commonly used commands in IGV are summarized in the official [list of batch commands](https://igv.org/doc/desktop/#UserGuide/tools/batch/#script-commands). (but even this does not seem to be all of them). You can also call the `commands` method from Ruby to open a browser and view the list.
 
 ```ruby
 igv.commands # Show the IGV command reference in your browser
