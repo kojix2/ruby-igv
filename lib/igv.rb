@@ -559,7 +559,7 @@ class IGV
   # @example
   #   igv.color_by("SAMPLE")
   #   igv.color_by("TAG", "NM")
-  def color_by(option, tag)
+  def color_by(option, tag = nil)
     send :colorBy, option, tag
   end
 
@@ -572,7 +572,7 @@ class IGV
   # @example
   #   igv.group("SAMPLE")
   #   igv.group("TAG", "NM")
-  def group(option, tag)
+  def group(option, tag = nil)
     send :group, option, tag
   end
 
