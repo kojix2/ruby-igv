@@ -6,13 +6,13 @@
 <title>
   Class: IGV
   
-    &mdash; Documentation by YARD 0.9.39
+    &mdash; Documentation by YARD 0.9.44
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" />
+  <link rel="stylesheet" href="css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "IGV";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -94,8 +96,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/igv.rb<span class="defines">,<br />
+    <dd>lib/igv.rb<span class="defines">,<br>
   lib/igv/version.rb</span>
+
 </dd>
   </dl>
   
@@ -103,9 +106,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>The Integrative Genomics Viewer (IGV) Ruby client. Provides a Ruby interface to control IGV via its batch command protocol.</p>
-
+    <p>The Integrative Genomics Viewer (IGV) Ruby client.
+Provides a Ruby interface to control IGV via its batch command protocol.</p>
 
   </div>
 </div>
@@ -174,9 +176,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute history.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute history.</p></div></span>
   
 </li>
 
@@ -203,9 +203,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute host.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute host.</p></div></span>
   
 </li>
 
@@ -232,9 +230,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute port.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute port.</p></div></span>
   
 </li>
 
@@ -269,9 +265,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Create IGV object and connect to IGV server.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Create IGV object and connect to IGV server.</p></div></span>
   
 </li>
 
@@ -293,14 +287,13 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Launch IGV from Ruby script.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Launch IGV from Ruby script.</p></div></span>
   
 </li>
 
       
     </ul>
+    
   
     <h2>
       Instance Method Summary
@@ -326,9 +319,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Clear all loaded tracks and data.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Clear all loaded tracks and data.</p></div></span>
   
 </li>
 
@@ -350,9 +341,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Clears all access tokens.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Clears all access tokens.</p></div></span>
   
 </li>
 
@@ -374,9 +363,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Close the socket.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Close the socket.</p></div></span>
   
 </li>
 
@@ -398,9 +385,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Check if the socket is closed.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Check if the socket is closed.</p></div></span>
   
 </li>
 
@@ -422,9 +407,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Collapse a given track.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Collapse a given track.</p></div></span>
   
 </li>
 
@@ -446,9 +429,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the “color by” option for alignment tracks.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the &quot;color by&quot; option for alignment tracks.</p></div></span>
   
 </li>
 
@@ -470,9 +451,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Open IGV batch command documentation in the browser.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Open IGV batch command documentation in the browser.</p></div></span>
   
 </li>
 
@@ -494,9 +473,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Connect to IGV server.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Connect to IGV server.</p></div></span>
   
 </li>
 
@@ -518,9 +495,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Write the value of “param” back to the response.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Write the value of &quot;param&quot; back to the response.</p></div></span>
   
 </li>
 
@@ -544,9 +519,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Exit (close) the IGV application and close the socket.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Exit (close) the IGV application and close the socket.</p></div></span>
   
 </li>
 
@@ -568,9 +541,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Expand a given track.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Expand a given track.</p></div></span>
   
 </li>
 
@@ -592,9 +563,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Select a genome by id, or load a genome (or indexed fasta) from the supplied path.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Select a genome by id, or load a genome (or indexed fasta) from the supplied path.</p></div></span>
   
 </li>
 
@@ -618,9 +587,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Go to the specified location or list of loci.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Go to the specified location or list of loci.</p></div></span>
   
 </li>
 
@@ -642,9 +609,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Group alignments by the specified option.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Group alignments by the specified option.</p></div></span>
   
 </li>
 
@@ -668,9 +633,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Create IGV client object.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Create IGV client object.</p></div></span>
   
 </li>
 
@@ -692,9 +655,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Kill IGV process by process group id.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Kill IGV process by process group id.</p></div></span>
   
 </li>
 
@@ -716,9 +677,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Load a data or session file by specifying a full path to a local file or a URL.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Load a data or session file by specifying a full path to a local file or a URL.</p></div></span>
   
 </li>
 
@@ -740,9 +699,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the number of vertical pixels (height) of each panel to include in image.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the number of vertical pixels (height) of each panel to include in image.</p></div></span>
   
 </li>
 
@@ -764,9 +721,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Create a new session.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Create a new session.</p></div></span>
   
 </li>
 
@@ -788,9 +743,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Overlay a list of tracks.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Overlay a list of tracks.</p></div></span>
   
 </li>
 
@@ -812,9 +765,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Temporarily set the preference named key to the specified value.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Temporarily set the preference named key to the specified value.</p></div></span>
   
 </li>
 
@@ -836,9 +787,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Define a region of interest bounded by the two loci.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Define a region of interest bounded by the two loci.</p></div></span>
   
 </li>
 
@@ -860,9 +809,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Save the current session.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Save the current session.</p></div></span>
   
 </li>
 
@@ -884,9 +831,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Scroll all panels to the top of the view.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Scroll all panels to the top of the view.</p></div></span>
   
 </li>
 
@@ -908,9 +853,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Send batch commands to IGV.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Send batch commands to IGV.</p></div></span>
   
 </li>
 
@@ -932,9 +875,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Separate an overlaid track into its constituitive tracks.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Separate an overlaid track into its constituitive tracks.</p></div></span>
   
 </li>
 
@@ -956,9 +897,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Syntactic sugar for IGV commands that begin with set.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Syntactic sugar for IGV commands that begin with set.</p></div></span>
   
 </li>
 
@@ -980,9 +919,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set an access token to be used in an Authorization header for all requests to host.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set an access token to be used in an Authorization header for all requests to host.</p></div></span>
   
 </li>
 
@@ -1004,9 +941,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the track “altColor”, used for negative values in a wig track or negative strand features.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the track &quot;altColor&quot;, used for negative values in a wig track or negative strand features.</p></div></span>
   
 </li>
 
@@ -1028,9 +963,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the track color.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the track color.</p></div></span>
   
 </li>
 
@@ -1052,9 +985,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the data range (scale) for all numeric tracks, or a specific track.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the data range (scale) for all numeric tracks, or a specific track.</p></div></span>
   
 </li>
 
@@ -1076,9 +1007,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the data scale to log (true) or linear (false).</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the data scale to log (true) or linear (false).</p></div></span>
   
 </li>
 
@@ -1100,9 +1029,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Show or hide the 3-frame translation rows of the sequence track.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Show or hide the 3-frame translation rows of the sequence track.</p></div></span>
   
 </li>
 
@@ -1124,9 +1051,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the sequence strand to positive (+) or negative (-).</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the sequence strand to positive (+) or negative (-).</p></div></span>
   
 </li>
 
@@ -1148,9 +1073,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set a delay (sleep) time in milliseconds between successive commands.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set a delay (sleep) time in milliseconds between successive commands.</p></div></span>
   
 </li>
 
@@ -1172,9 +1095,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the specified track’s height in integer units.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the specified track's height in integer units.</p></div></span>
   
 </li>
 
@@ -1196,9 +1117,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Show “preference.tab” in your browser.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Show &quot;preference.tab&quot; in your browser.</p></div></span>
   
 </li>
 
@@ -1220,9 +1139,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Save a snapshot of the IGV window to an image file.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Save a snapshot of the IGV window to an image file.</p></div></span>
   
 </li>
 
@@ -1244,9 +1161,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set or get the directory in which to write images (snapshots).</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set or get the directory in which to write images (snapshots).</p></div></span>
   
 </li>
 
@@ -1268,9 +1183,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Sort alignment or segmented copy number tracks.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Sort alignment or segmented copy number tracks.</p></div></span>
   
 </li>
 
@@ -1292,9 +1205,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Squish a given track.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Squish a given track.</p></div></span>
   
 </li>
 
@@ -1316,14 +1227,13 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Set the display mode for an alignment track to “View as pairs”.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Set the display mode for an alignment track to &quot;View as pairs&quot;.</p></div></span>
   
 </li>
 
       
     </ul>
+    
   
 
 <div id="constructor_details" class="method_details_list">
@@ -1340,9 +1250,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Create IGV client object.</p>
-
+    <p>Create IGV client object.</p>
 
   </div>
 </div>
@@ -1362,9 +1270,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Hostname or IP address of IGV server.</p>
-</div>
+        <div class='inline'><p>Hostname or IP address of IGV server.</p></div>
       
     </li>
   
@@ -1380,9 +1286,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Port number of IGV server.</p>
-</div>
+        <div class='inline'><p>Port number of IGV server.</p></div>
       
     </li>
   
@@ -1398,9 +1302,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Directory path to save snapshots.</p>
-</div>
+        <div class='inline'><p>Directory path to save snapshots.</p></div>
       
     </li>
   
@@ -1469,9 +1371,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns the value of attribute history.</p>
-
+    <p>Returns the value of attribute history.</p>
 
   </div>
 </div>
@@ -1512,9 +1412,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns the value of attribute host.</p>
-
+    <p>Returns the value of attribute host.</p>
 
   </div>
 </div>
@@ -1555,9 +1453,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns the value of attribute port.</p>
-
+    <p>Returns the value of attribute port.</p>
 
   </div>
 </div>
@@ -1603,9 +1499,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Create IGV object and connect to IGV server. This method accepts a block.</p>
-
+    <p>Create IGV object and connect to IGV server.
+This method accepts a block.</p>
 
   </div>
 </div>
@@ -1625,9 +1520,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Hostname or IP address of IGV server.</p>
-</div>
+        <div class='inline'><p>Hostname or IP address of IGV server.</p></div>
       
     </li>
   
@@ -1643,9 +1536,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Port number of IGV server.</p>
-</div>
+        <div class='inline'><p>Port number of IGV server.</p></div>
       
     </li>
   
@@ -1661,9 +1552,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Directory path to save snapshots.</p>
-</div>
+        <div class='inline'><p>Directory path to save snapshots.</p></div>
       
     </li>
   
@@ -1680,9 +1569,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV client object.</p>
-</div>
+        <div class='inline'><p>IGV client object.</p></div>
       
     </li>
   
@@ -1698,9 +1585,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV client object.</p>
-</div>
+        <div class='inline'><p>IGV client object.</p></div>
       
     </li>
   
@@ -1759,14 +1644,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>This will spawn a new IGV process and connect to it.</p>
-</div>
+    <div class='inline'><p>This will spawn a new IGV process and connect to it.</p></div>
   </div>
 
-
 <p>Launch IGV from Ruby script.</p>
-
 
   </div>
 </div>
@@ -1786,9 +1667,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Port number.</p>
-</div>
+        <div class='inline'><p>Port number.</p></div>
       
     </li>
   
@@ -1804,9 +1683,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Command to launch IGV.</p>
-</div>
+        <div class='inline'><p>Command to launch IGV.</p></div>
       
     </li>
   
@@ -1822,9 +1699,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Directory path to save snapshots.</p>
-</div>
+        <div class='inline'><p>Directory path to save snapshots.</p></div>
       
     </li>
   
@@ -1841,9 +1716,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV client object.</p>
-</div>
+        <div class='inline'><p>IGV client object.</p></div>
       
     </li>
   
@@ -1926,14 +1799,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: clear</p>
-</div>
+    <div class='inline'><p>IGV Batch command: clear</p></div>
   </div>
 
-
 <p>Clear all loaded tracks and data.</p>
-
 
   </div>
 </div>
@@ -1958,9 +1827,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Returns self for method chaining.</p>
-</div>
+        <div class='inline'><p>Returns self for method chaining.</p></div>
       
     </li>
   
@@ -2003,14 +1870,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: clearAccessTokens</p>
-</div>
+    <div class='inline'><p>IGV Batch command: clearAccessTokens</p></div>
   </div>
 
-
 <p>Clears all access tokens.</p>
-
 
   </div>
 </div>
@@ -2035,9 +1898,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -2075,9 +1936,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Close the socket. This does not exit IGV.</p>
-
+    <p>Close the socket. This does not exit IGV.</p>
 
   </div>
 </div>
@@ -2094,9 +1953,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Closes the socket and returns nil.</p>
-</div>
+        <div class='inline'><p>Closes the socket and returns nil.</p></div>
       
     </li>
   
@@ -2136,9 +1993,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Check if the socket is closed.</p>
-
+    <p>Check if the socket is closed.</p>
 
   </div>
 </div>
@@ -2197,14 +2052,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: collapse</p>
-</div>
+    <div class='inline'><p>IGV Batch command: collapse</p></div>
   </div>
 
-
 <p>Collapse a given track. If not specified, collapses all tracks.</p>
-
 
   </div>
 </div>
@@ -2233,9 +2084,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name (optional).</p>
-</div>
+        <div class='inline'><p>Track name (optional).</p></div>
       
     </li>
   
@@ -2252,9 +2101,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -2295,14 +2142,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: colorBy</p>
-</div>
+    <div class='inline'><p>IGV Batch command: colorBy</p></div>
   </div>
 
-
-<p>Set the “color by” option for alignment tracks.</p>
-
+<p>Set the &quot;color by&quot; option for alignment tracks.</p>
 
   </div>
 </div>
@@ -2329,9 +2172,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Color by option (e.g. “SAMPLE”, “READ_GROUP”, “TAG”, …).</p>
-</div>
+        <div class='inline'><p>Color by option (e.g. &quot;SAMPLE&quot;, &quot;READ_GROUP&quot;, &quot;TAG&quot;, ...).</p></div>
       
     </li>
   
@@ -2345,9 +2186,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Tag name (required for option “TAG”).</p>
-</div>
+        <div class='inline'><p>Tag name (required for option &quot;TAG&quot;).</p></div>
       
     </li>
   
@@ -2364,9 +2203,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -2404,9 +2241,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Open IGV batch command documentation in the browser.</p>
-
+    <p>Open IGV batch command documentation in the browser.</p>
 
   </div>
 </div>
@@ -2447,9 +2282,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Connect to IGV server.</p>
-
+    <p>Connect to IGV server.</p>
 
   </div>
 </div>
@@ -2469,9 +2302,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Hostname or IP address.</p>
-</div>
+        <div class='inline'><p>Hostname or IP address.</p></div>
       
     </li>
   
@@ -2487,9 +2318,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Port number.</p>
-</div>
+        <div class='inline'><p>Port number.</p></div>
       
     </li>
   
@@ -2505,9 +2334,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Timeout in seconds.</p>
-</div>
+        <div class='inline'><p>Timeout in seconds.</p></div>
       
     </li>
   
@@ -2524,9 +2351,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Returns self for method chaining.</p>
-</div>
+        <div class='inline'><p>Returns self for method chaining.</p></div>
       
     </li>
   
@@ -2571,14 +2396,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: echo</p>
-</div>
+    <div class='inline'><p>IGV Batch command: echo</p></div>
   </div>
 
-
-<p>Write the value of “param” back to the response.</p>
-
+<p>Write the value of &quot;param&quot; back to the response.</p>
 
   </div>
 </div>
@@ -2606,9 +2427,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The parameter to echo.</p>
-</div>
+        <div class='inline'><p>The parameter to echo.</p></div>
       
     </li>
   
@@ -2625,9 +2444,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The value of “param”. If param is not specified, “echo”.</p>
-</div>
+        <div class='inline'><p>The value of &quot;param&quot;. If param is not specified, &quot;echo&quot;.</p></div>
       
     </li>
   
@@ -2672,14 +2489,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: exit</p>
-</div>
+    <div class='inline'><p>IGV Batch command: exit</p></div>
   </div>
 
-
 <p>Exit (close) the IGV application and close the socket.</p>
-
 
   </div>
 </div>
@@ -2704,9 +2517,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Exits IGV and closes the socket.</p>
-</div>
+        <div class='inline'><p>Exits IGV and closes the socket.</p></div>
       
     </li>
   
@@ -2751,14 +2562,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: expand</p>
-</div>
+    <div class='inline'><p>IGV Batch command: expand</p></div>
   </div>
 
-
 <p>Expand a given track. If not specified, expands all tracks.</p>
-
 
   </div>
 </div>
@@ -2787,9 +2594,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name (optional).</p>
-</div>
+        <div class='inline'><p>Track name (optional).</p></div>
       
     </li>
   
@@ -2806,9 +2611,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -2849,14 +2652,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: genome</p>
-</div>
+    <div class='inline'><p>IGV Batch command: genome</p></div>
   </div>
 
-
 <p>Select a genome by id, or load a genome (or indexed fasta) from the supplied path.</p>
-
 
   </div>
 </div>
@@ -2883,9 +2682,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Genome id (e.g. “hg19”) or path to fasta/indexed genome.</p>
-</div>
+        <div class='inline'><p>Genome id (e.g. &quot;hg19&quot;) or path to fasta/indexed genome.</p></div>
       
     </li>
   
@@ -2902,9 +2699,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -2959,14 +2754,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: goto</p>
-</div>
+    <div class='inline'><p>IGV Batch command: goto</p></div>
   </div>
 
-
 <p>Go to the specified location or list of loci.</p>
-
 
   </div>
 </div>
@@ -2992,9 +2783,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Locus or list of loci (e.g. “chr1:1000-2000”).</p>
-</div>
+        <div class='inline'><p>Locus or list of loci (e.g. &quot;chr1:1000-2000&quot;).</p></div>
       
     </li>
   
@@ -3011,9 +2800,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3054,14 +2841,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: group</p>
-</div>
+    <div class='inline'><p>IGV Batch command: group</p></div>
   </div>
 
-
 <p>Group alignments by the specified option.</p>
-
 
   </div>
 </div>
@@ -3088,9 +2871,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Group option (e.g. “SAMPLE”, “READ_GROUP”, “TAG”, …).</p>
-</div>
+        <div class='inline'><p>Group option (e.g. &quot;SAMPLE&quot;, &quot;READ_GROUP&quot;, &quot;TAG&quot;, ...).</p></div>
       
     </li>
   
@@ -3104,9 +2885,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Tag name or position (required for option “TAG”).</p>
-</div>
+        <div class='inline'><p>Tag name or position (required for option &quot;TAG&quot;).</p></div>
       
     </li>
   
@@ -3123,9 +2902,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3166,14 +2943,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>Only works for IGV processes started by IGV.start.</p>
-</div>
+    <div class='inline'><p>Only works for IGV processes started by IGV.start.</p></div>
   </div>
 
-
 <p>Kill IGV process by process group id.</p>
-
 
   </div>
 </div>
@@ -3190,9 +2963,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Kills the IGV process if started by this client, otherwise does nothing.</p>
-</div>
+        <div class='inline'><p>Kills the IGV process if started by this client, otherwise does nothing.</p></div>
       
     </li>
   
@@ -3251,14 +3022,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: load</p>
-</div>
+    <div class='inline'><p>IGV Batch command: load</p></div>
   </div>
 
-
 <p>Load a data or session file by specifying a full path to a local file or a URL.</p>
-
 
   </div>
 </div>
@@ -3285,9 +3052,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Path to a local file or a URL.</p>
-</div>
+        <div class='inline'><p>Path to a local file or a URL.</p></div>
       
     </li>
   
@@ -3303,9 +3068,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Optional index file path.</p>
-</div>
+        <div class='inline'><p>Optional index file path.</p></div>
       
     </li>
   
@@ -3322,9 +3085,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3381,14 +3142,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: maxPanelHeight</p>
-</div>
+    <div class='inline'><p>IGV Batch command: maxPanelHeight</p></div>
   </div>
 
-
 <p>Set the number of vertical pixels (height) of each panel to include in image.</p>
-
 
   </div>
 </div>
@@ -3414,9 +3171,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Height in pixels.</p>
-</div>
+        <div class='inline'><p>Height in pixels.</p></div>
       
     </li>
   
@@ -3433,9 +3188,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3476,14 +3229,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: new</p>
-</div>
+    <div class='inline'><p>IGV Batch command: new</p></div>
   </div>
 
-
 <p>Create a new session. Unloads all tracks except the default genome annotations.</p>
-
 
   </div>
 </div>
@@ -3508,9 +3257,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Returns self for method chaining.</p>
-</div>
+        <div class='inline'><p>Returns self for method chaining.</p></div>
       
     </li>
   
@@ -3553,14 +3300,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: overlay</p>
-</div>
+    <div class='inline'><p>IGV Batch command: overlay</p></div>
   </div>
 
-
 <p>Overlay a list of tracks.</p>
-
 
   </div>
 </div>
@@ -3586,9 +3329,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The track to overlay.</p>
-</div>
+        <div class='inline'><p>The track to overlay.</p></div>
       
     </li>
   
@@ -3602,9 +3343,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>List of tracks to overlay.</p>
-</div>
+        <div class='inline'><p>List of tracks to overlay.</p></div>
       
     </li>
   
@@ -3621,9 +3360,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3664,14 +3401,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: preference</p>
-</div>
+    <div class='inline'><p>IGV Batch command: preference</p></div>
   </div>
 
-
 <p>Temporarily set the preference named key to the specified value.</p>
-
 
   </div>
 </div>
@@ -3697,9 +3430,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Preference key.</p>
-</div>
+        <div class='inline'><p>Preference key.</p></div>
       
     </li>
   
@@ -3713,9 +3444,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Preference value.</p>
-</div>
+        <div class='inline'><p>Preference value.</p></div>
       
     </li>
   
@@ -3732,9 +3461,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3782,14 +3509,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: region</p>
-</div>
+    <div class='inline'><p>IGV Batch command: region</p></div>
   </div>
 
-
 <p>Define a region of interest bounded by the two loci.</p>
-
 
   </div>
 </div>
@@ -3815,9 +3538,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Chromosome name.</p>
-</div>
+        <div class='inline'><p>Chromosome name.</p></div>
       
     </li>
   
@@ -3831,9 +3552,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Start position.</p>
-</div>
+        <div class='inline'><p>Start position.</p></div>
       
     </li>
   
@@ -3847,9 +3566,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>End position.</p>
-</div>
+        <div class='inline'><p>End position.</p></div>
       
     </li>
   
@@ -3866,9 +3583,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -3909,14 +3624,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: saveSession</p>
-</div>
+    <div class='inline'><p>IGV Batch command: saveSession</p></div>
   </div>
 
-
 <p>Save the current session.</p>
-
 
   </div>
 </div>
@@ -3942,9 +3653,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Path to the session file.</p>
-</div>
+        <div class='inline'><p>Path to the session file.</p></div>
       
     </li>
   
@@ -3961,9 +3670,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4006,14 +3713,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: scrollToTop</p>
-</div>
+    <div class='inline'><p>IGV Batch command: scrollToTop</p></div>
   </div>
 
-
 <p>Scroll all panels to the top of the view.</p>
-
 
   </div>
 </div>
@@ -4038,9 +3741,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4078,9 +3779,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Send batch commands to IGV.</p>
-
+    <p>Send batch commands to IGV.</p>
 
   </div>
 </div>
@@ -4106,9 +3805,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Batch commands.</p>
-</div>
+        <div class='inline'><p>Batch commands.</p></div>
       
     </li>
   
@@ -4125,9 +3822,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Response from IGV.</p>
-</div>
+        <div class='inline'><p>Response from IGV.</p></div>
       
     </li>
   
@@ -4194,14 +3889,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: separate</p>
-</div>
+    <div class='inline'><p>IGV Batch command: separate</p></div>
   </div>
 
-
 <p>Separate an overlaid track into its constituitive tracks.</p>
-
 
   </div>
 </div>
@@ -4227,9 +3918,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The name of the overlaid track to separate.</p>
-</div>
+        <div class='inline'><p>The name of the overlaid track to separate.</p></div>
       
     </li>
   
@@ -4246,9 +3935,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4286,9 +3973,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Syntactic sugar for IGV commands that begin with set.</p>
-
+    <p>Syntactic sugar for IGV commands that begin with set.</p>
 
   </div>
 </div>
@@ -4315,9 +4000,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Batch command name (without “set” prefix).</p>
-</div>
+        <div class='inline'><p>Batch command name (without &quot;set&quot; prefix).</p></div>
       
     </li>
   
@@ -4331,9 +4014,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Parameters for the command.</p>
-</div>
+        <div class='inline'><p>Parameters for the command.</p></div>
       
     </li>
   
@@ -4350,9 +4031,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Response from IGV.</p>
-</div>
+        <div class='inline'><p>Response from IGV.</p></div>
       
     </li>
   
@@ -4395,14 +4074,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setAccessToken</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setAccessToken</p></div>
   </div>
 
-
 <p>Set an access token to be used in an Authorization header for all requests to host.</p>
-
 
   </div>
 </div>
@@ -4428,9 +4103,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The access token.</p>
-</div>
+        <div class='inline'><p>The access token.</p></div>
       
     </li>
   
@@ -4446,9 +4119,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The host to use the token for (optional).</p>
-</div>
+        <div class='inline'><p>The host to use the token for (optional).</p></div>
       
     </li>
   
@@ -4465,9 +4136,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4508,14 +4177,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setAltColor</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setAltColor</p></div>
   </div>
 
-
-<p>Set the track “altColor”, used for negative values in a wig track or negative strand features.</p>
-
+<p>Set the track &quot;altColor&quot;, used for negative values in a wig track or negative strand features.</p>
 
   </div>
 </div>
@@ -4541,9 +4206,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Color string (e.g. “255,0,0” or “FF0000”).</p>
-</div>
+        <div class='inline'><p>Color string (e.g. &quot;255,0,0&quot; or &quot;FF0000&quot;).</p></div>
       
     </li>
   
@@ -4557,9 +4220,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name.</p>
-</div>
+        <div class='inline'><p>Track name.</p></div>
       
     </li>
   
@@ -4576,9 +4237,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4619,14 +4278,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setColor</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setColor</p></div>
   </div>
 
-
 <p>Set the track color.</p>
-
 
   </div>
 </div>
@@ -4652,9 +4307,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Color string (e.g. “255,0,0” or “FF0000”).</p>
-</div>
+        <div class='inline'><p>Color string (e.g. &quot;255,0,0&quot; or &quot;FF0000&quot;).</p></div>
       
     </li>
   
@@ -4668,9 +4321,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name.</p>
-</div>
+        <div class='inline'><p>Track name.</p></div>
       
     </li>
   
@@ -4687,9 +4338,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4730,14 +4379,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setDataRange</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setDataRange</p></div>
   </div>
 
-
 <p>Set the data range (scale) for all numeric tracks, or a specific track.</p>
-
 
   </div>
 </div>
@@ -4763,9 +4408,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Range string (e.g. “0,100” or “auto”).</p>
-</div>
+        <div class='inline'><p>Range string (e.g. &quot;0,100&quot; or &quot;auto&quot;).</p></div>
       
     </li>
   
@@ -4779,9 +4422,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name.</p>
-</div>
+        <div class='inline'><p>Track name.</p></div>
       
     </li>
   
@@ -4798,9 +4439,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4841,14 +4480,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setLogScale</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setLogScale</p></div>
   </div>
 
-
 <p>Set the data scale to log (true) or linear (false).</p>
-
 
   </div>
 </div>
@@ -4874,9 +4509,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>true for log scale, false for linear.</p>
-</div>
+        <div class='inline'><p>true for log scale, false for linear.</p></div>
       
     </li>
   
@@ -4890,9 +4523,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name (optional).</p>
-</div>
+        <div class='inline'><p>Track name (optional).</p></div>
       
     </li>
   
@@ -4909,9 +4540,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -4956,14 +4585,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setSequenceShowTranslation</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setSequenceShowTranslation</p></div>
   </div>
 
-
 <p>Show or hide the 3-frame translation rows of the sequence track.</p>
-
 
   </div>
 </div>
@@ -4989,9 +4614,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>true to show, false to hide.</p>
-</div>
+        <div class='inline'><p>true to show, false to hide.</p></div>
       
     </li>
   
@@ -5008,9 +4631,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5055,14 +4676,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setSequenceStrand</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setSequenceStrand</p></div>
   </div>
 
-
 <p>Set the sequence strand to positive (+) or negative (-).</p>
-
 
   </div>
 </div>
@@ -5088,9 +4705,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>“+” or “-”.</p>
-</div>
+        <div class='inline'><p>&quot;+&quot; or &quot;-&quot;.</p></div>
       
     </li>
   
@@ -5107,9 +4722,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5150,14 +4763,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setSleepInterval</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setSleepInterval</p></div>
   </div>
 
-
 <p>Set a delay (sleep) time in milliseconds between successive commands.</p>
-
 
   </div>
 </div>
@@ -5183,9 +4792,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Milliseconds to sleep.</p>
-</div>
+        <div class='inline'><p>Milliseconds to sleep.</p></div>
       
     </li>
   
@@ -5202,9 +4809,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5245,14 +4850,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: setTrackHeight</p>
-</div>
+    <div class='inline'><p>IGV Batch command: setTrackHeight</p></div>
   </div>
 
-
-<p>Set the specified track’s height in integer units.</p>
-
+<p>Set the specified track's height in integer units.</p>
 
   </div>
 </div>
@@ -5278,9 +4879,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Height in pixels.</p>
-</div>
+        <div class='inline'><p>Height in pixels.</p></div>
       
     </li>
   
@@ -5294,9 +4893,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name.</p>
-</div>
+        <div class='inline'><p>Track name.</p></div>
       
     </li>
   
@@ -5313,9 +4910,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5353,9 +4948,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Show “preference.tab” in your browser.</p>
-
+    <p>Show &quot;preference.tab&quot; in your browser.</p>
 
   </div>
 </div>
@@ -5399,14 +4992,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: snapshot</p>
-</div>
+    <div class='inline'><p>IGV Batch command: snapshot</p></div>
   </div>
 
-
 <p>Save a snapshot of the IGV window to an image file.</p>
-
 
   </div>
 </div>
@@ -5434,9 +5023,10 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Name of the image file. If nil, uses the current locus. If filename is omitted, writes a PNG file with a filename generated based on the locus. If filename is specified, the filename extension determines the image file format, which must be either .png or .svg. Passing a path might work, but is not recommended.</p>
-</div>
+        <div class='inline'><p>Name of the image file. If nil, uses the current locus.
+If filename is omitted, writes a PNG file with a filename generated based on the locus.
+If filename is specified, the filename extension determines the image file format, which must be either .png or .svg.
+Passing a path might work, but is not recommended.</p></div>
       
     </li>
   
@@ -5534,14 +5124,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: snapshotDirectory</p>
-</div>
+    <div class='inline'><p>IGV Batch command: snapshotDirectory</p></div>
   </div>
 
-
 <p>Set or get the directory in which to write images (snapshots).</p>
-
 
   </div>
 </div>
@@ -5570,9 +5156,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Directory path. If nil, returns current snapshot directory.</p>
-</div>
+        <div class='inline'><p>Directory path. If nil, returns current snapshot directory.</p></div>
       
     </li>
   
@@ -5589,9 +5173,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response or current directory.</p>
-</div>
+        <div class='inline'><p>IGV response or current directory.</p></div>
       
     </li>
   
@@ -5646,14 +5228,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: sort</p>
-</div>
+    <div class='inline'><p>IGV Batch command: sort</p></div>
   </div>
 
-
 <p>Sort alignment or segmented copy number tracks.</p>
-
 
   </div>
 </div>
@@ -5681,9 +5259,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Sort option (e.g. “base”, “position”, “strand”, “quality”, “sample”, “readGroup”).</p>
-</div>
+        <div class='inline'><p>Sort option (e.g. &quot;base&quot;, &quot;position&quot;, &quot;strand&quot;, &quot;quality&quot;, &quot;sample&quot;, &quot;readGroup&quot;).</p></div>
       
     </li>
   
@@ -5700,9 +5276,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5749,14 +5323,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: squish</p>
-</div>
+    <div class='inline'><p>IGV Batch command: squish</p></div>
   </div>
 
-
 <p>Squish a given track. If not specified, squishes all annotation tracks.</p>
-
 
   </div>
 </div>
@@ -5785,9 +5355,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name (optional).</p>
-</div>
+        <div class='inline'><p>Track name (optional).</p></div>
       
     </li>
   
@@ -5804,9 +5372,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5847,14 +5413,10 @@
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'>
-<p>IGV Batch command: viewaspairs</p>
-</div>
+    <div class='inline'><p>IGV Batch command: viewaspairs</p></div>
   </div>
 
-
-<p>Set the display mode for an alignment track to “View as pairs”.</p>
-
+<p>Set the display mode for an alignment track to &quot;View as pairs&quot;.</p>
 
   </div>
 </div>
@@ -5883,9 +5445,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Track name (optional).</p>
-</div>
+        <div class='inline'><p>Track name (optional).</p></div>
       
     </li>
   
@@ -5902,9 +5462,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>IGV response.</p>
-</div>
+        <div class='inline'><p>IGV response.</p></div>
       
     </li>
   
@@ -5936,9 +5494,9 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 12 05:40:15 2026 by
+  Generated on Fri Jun 19 00:30:39 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.39 (ruby-4.0.2).
+  0.9.44 (ruby-4.0.5).
 </div>
 
     </div>
