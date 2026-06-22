@@ -26,6 +26,10 @@ class IGVTest < Test::Unit::TestCase
     assert_equal 'OK', @igv.goto('chr2')
     assert_equal 'OK', @igv.snapshot('test.png')
     assert_true File.exist?(File.expand_path('fixtures/test.png', __dir__))
+    assert_equal 'OK', @igv.color_by('READ_STRAND', nil)
+    assert_equal 'OK', @igv.color_by('READ_STRAND')
+    assert_equal 'OK', @igv.group('NONE', nil)
+    assert_equal 'OK', @igv.group('NONE')          
   end
 
   def teardown
